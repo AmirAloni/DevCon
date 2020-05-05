@@ -8,7 +8,7 @@ architecture:
 ### Client side 
 React, Javascript, HTML(responsive), CSS.
 Redux for state management.
-Npm Packeges - axios, react-router-dom, redux, react-redux, redux-thunk, redux-devtools-extention, moment, react-moment, uuid
+Npm Packeges - react-router-dom, redux, react-redux, redux-thunk, redux-devtools-extention, moment, react-moment, uuid
 
 ### Server side
 Node.js & Express Rest Api, MongoDB hosted on AWS.
