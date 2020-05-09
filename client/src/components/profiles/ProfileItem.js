@@ -1,6 +1,7 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { Button } from '@material-ui/core';
+import {buttonStyle} from '../Styles'
 
 const ProfileItem = ({
   profile: {
@@ -11,18 +12,21 @@ const ProfileItem = ({
     skills
   }
 }) => {
+
+  const classes = buttonStyle();
+
   return (
     <div className='profile bg-light'>
       <img src={avatar} alt='' className='round-img' />
       <div>
-        <h2>{name}</h2>
+        <h2>{name.charAt(0).toUpperCase() + name.slice(1)}</h2>
         <p>
           {status} {company && <span> at {company}</span>}
         </p>
         <p className='my-1'>{location && <span>{location}</span>}</p>
-        <Link to={`/profile/${_id}`} className='btn btn-primary'>
+        <Button href={`/profile/${_id}`} className={classes.profileItems}>
           View Profile
-        </Link>
+        </Button>
       </div>
       <ul>
         {skills.slice(0, 4).map((skill, index) => (

@@ -2,17 +2,19 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { addPost } from '../../actions/post';
+import Button from '@material-ui/core/Button';
+import {buttonStyle} from '../Styles'
+
 
 const PostForm = ({ addPost }) => {
   const [text, setText] = useState('');
 
+  const btnStyle = buttonStyle();
+
   return (
     <div className='post-form'>
-      <div className='bg-primary p'>
-        <h3>Say Something...</h3>
-      </div>
       <form
-        className='form my-1'
+        className='form my-2'
         onSubmit={e => {
           e.preventDefault();
           addPost({ text });
@@ -28,7 +30,7 @@ const PostForm = ({ addPost }) => {
           onChange={e => setText(e.target.value)}
           required
         />
-        <input type='submit' className='btn btn-dark my-1' value='Submit' />
+        <Button type='submit' className={btnStyle.primary}>Submit</Button>
       </form>
     </div>
   );

@@ -1,7 +1,10 @@
 import React from 'react';
-import { Link, Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+
+import { Link } from '@material-ui/core';
+import {linkStyle, h1White, pWhite, marginDiv} from '../Styles'
 
 const Landing = ({ isAuthenticated }) => {
   if (isAuthenticated) {
@@ -12,16 +15,15 @@ const Landing = ({ isAuthenticated }) => {
     <section className='landing'>
       <div className='dark-overlay'>
         <div className='landing-inner'>
-          <h1 className='x-large'>Developer Connector</h1>
-          <p className='lead'>
-            Create a developer profile/portfolio, share posts and get help from
-            other developers
+          <h1 className={h1White().root}>Network for Developers</h1>
+          <p className={pWhite().root}>
+            Create your developer profile, share posts, issues, and solutions with other developers.
           </p>
-          <div className='buttons'>
-            <Link to='/register' className='btn btn-primary'>
+          <div className={marginDiv().root}>
+            <Link href='/register' className={linkStyle().main} underline='none'>
               Sign Up
             </Link>
-            <Link to='/login' className='btn btn-light'>
+            <Link href='/login' className={linkStyle().main} underline='none'>
               Login
             </Link>
           </div>

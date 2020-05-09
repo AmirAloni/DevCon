@@ -4,8 +4,13 @@ import Moment from 'react-moment';
 import moment from 'moment';
 import { connect } from 'react-redux';
 import { deleteEducation } from '../../actions/profile';
+import { Button } from '@material-ui/core';
+import {buttonStyle} from '../Styles'
 
 const Education = ({ education, deleteEducation }) => {
+  
+  const btnStyle = buttonStyle();
+  
   const educations = education.map(edu => (
     <tr key={edu._id}>
       <td>{edu.school}</td>
@@ -19,12 +24,12 @@ const Education = ({ education, deleteEducation }) => {
         )}
       </td>
       <td>
-        <button
+        <Button
           onClick={() => deleteEducation(edu._id)}
-          className="btn btn-danger"
+          className={btnStyle.delete}
         >
           Delete
-        </button>
+        </Button>
       </td>
     </tr>
   ));

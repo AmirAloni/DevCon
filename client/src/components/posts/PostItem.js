@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 import Moment from 'react-moment';
 import { connect } from 'react-redux';
 import { addLike, removeLike, deletePost } from '../../actions/post';
+import {buttonStyle} from '../Styles'
+import { Button } from '@material-ui/core';
 
 const PostItem = ({
   addLike,
@@ -12,12 +14,16 @@ const PostItem = ({
   auth,
   post: { _id, text, name, avatar, user, likes, comments, date },
   showActions
-}) => (
+}) => {
+
+  const btnStyle = buttonStyle();
+
+  return(
   <div className='post bg-white p-1 my-1'>
     <div>
       <Link to={`/profile/${user}`}>
         <img className='round-img' src={avatar} alt='' />
-        <h4>{name}</h4>
+        <h4>{name.charAt(0).toUpperCase() + name.slice(1)}</h4>
       </Link>
     </div>
     <div>
@@ -28,41 +34,39 @@ const PostItem = ({
 
       {showActions && (
         <Fragment>
-          <button
+          <Button
             onClick={() => addLike(_id)}
-            type='button'
-            className='btn btn-light'
+            className={btnStyle.secondary}
           >
             <i className='fas fa-thumbs-up' />{' '}
             <span>{likes.length > 0 && <span>{likes.length}</span>}</span>
-          </button>
-          <button
+          </Button>
+          <Button
             onClick={() => removeLike(_id)}
-            type='button'
-            className='btn btn-light'
+            className={btnStyle.cancel}
           >
             <i className='fas fa-thumbs-down' />
-          </button>
-          <Link to={`/posts/${_id}`} className='btn btn-primary'>
-            Discussion{' '}
+          </Button>
+          <Button href={`/posts/${_id}`} className={btnStyle.primary}>
+            Show Comments{' '}
             {comments.length > 0 && (
               <span className='comment-count'>{comments.length}</span>
             )}
-          </Link>
+          </Button>
           {!auth.loading && user === auth.user._id && (
-            <button
+            <Button
               onClick={() => deletePost(_id)}
-              type='button'
-              className='btn btn-danger'
+              className={btnStyle.delete}
             >
-              <i className='fas fa-times' />
-            </button>
+              Delete
+            </Button>
           )}
         </Fragment>
       )}
     </div>
   </div>
 );
+};
 
 PostItem.defaultProps = {
   showActions: true

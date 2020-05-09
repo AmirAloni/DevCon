@@ -16,11 +16,7 @@ const Profiles = ({ getProfiles, profile: { profiles, loading } }) => {
         <Spinner />
       ) : (
         <Fragment>
-          <h1 className='large text-primary'>Developers</h1>
-          <p className='lead'>
-            <i className='fab fa-connectdevelop' /> Browse and connect with
-            developers
-          </p>
+          <h3 className='large text-primary'>Developers</h3>
           <div className='profiles'>
             {profiles.length > 0 ? (
               profiles.map(profile => (

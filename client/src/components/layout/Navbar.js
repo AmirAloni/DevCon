@@ -1,29 +1,25 @@
 import React, { Fragment } from 'react';
-import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { logout } from '../../actions/auth';
+
+import { Link } from '@material-ui/core';
+import {linkStyle} from '../Styles'
 
 const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
   const authLinks = (
     <ul>
       <li>
-        <Link to='/profiles'>Developers</Link>
+        <Link href='/profiles' className={linkStyle().smallWhite} underline='none'>Developers</Link>
       </li>
       <li>
-        <Link to='/posts'>Posts</Link>
+        <Link href='/posts' className={linkStyle().smallWhite} underline='none'>Posts</Link>
       </li>
       <li>
-        <Link to='/dashboard'>
-          <i className='fas fa-user' />{' '}
-          <span className='hide-sm'>Dashboard</span>
-        </Link>
+        <Link href='/dashboard' className={linkStyle().smallWhite} underline='none'>Dashboard</Link>
       </li>
       <li>
-        <a onClick={logout} href='#!'>
-          <i className='fas fa-sign-out-alt' />{' '}
-          <span className='hide-sm'>Logout</span>
-        </a>
+        <Link onClick={logout} href='/' className={linkStyle().smallWhite} underline='none'>Logout</Link>
       </li>
     </ul>
   );
@@ -31,13 +27,19 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
   const guestLinks = (
     <ul>
       <li>
-        <Link to='/profiles'>Developers</Link>
+        <Link href='/profiles' className={linkStyle().smallWhite} underline='none'>
+          Developers
+          </Link>
       </li>
       <li>
-        <Link to='/register'>Register</Link>
+        <Link href='/register' className={linkStyle().smallWhite} underline='none'>
+          Register
+          </Link>
       </li>
       <li>
-        <Link to='/login'>Login</Link>
+        <Link href='/login' className={linkStyle().smallWhite} underline='none'>
+          Login
+          </Link>
       </li>
     </ul>
   );
@@ -45,9 +47,7 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
   return (
     <nav className='navbar bg-dark'>
       <h1>
-        <Link to='/'>
-          <i className='fas fa-code' /> DevConnector
-        </Link>
+        <Link href='/' className={linkStyle().bigWhite} underline='none'>DevCon</Link>
       </h1>
       {!loading && (
         <Fragment>{isAuthenticated ? authLinks : guestLinks}</Fragment>

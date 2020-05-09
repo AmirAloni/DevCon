@@ -1,29 +1,51 @@
-import React, { Fragment, useState, useEffect } from 'react';
-import { Link, withRouter } from 'react-router-dom';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { createProfile, getCurrentProfile } from '../../actions/profile';
+import React, { Fragment, useState, useEffect } from "react";
+import { Link, withRouter } from "react-router-dom";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { createProfile, getCurrentProfile } from "../../actions/profile";
+import {
+  Button,
+  Select,
+  MenuItem,
+  TextField,
+  Container,
+  CssBaseline,
+  Typography,
+} from "@material-ui/core";
+import {
+  buttonStyle,
+  selectStyle,
+  textFieldStyle,
+  loginStyle,
+  iconStyle,
+} from "../Styles";
+import FacebookIcon from "@material-ui/icons/Facebook";
+import InstagramIcon from "@material-ui/icons/Instagram";
+import LinkedInIcon from "@material-ui/icons/LinkedIn";
+import LanguageIcon from "@material-ui/icons/Language";
+import TwitterIcon from "@material-ui/icons/Twitter";
+import YouTubeIcon from "@material-ui/icons/YouTube";
 
 const initialState = {
-  company: '',
-  website: '',
-  location: '',
-  status: '',
-  skills: '',
-  githubusername: '',
-  bio: '',
-  twitter: '',
-  facebook: '',
-  linkedin: '',
-  youtube: '',
-  instagram: ''
+  company: "",
+  website: "",
+  location: "",
+  status: "",
+  skills: "",
+  githubusername: "",
+  bio: "",
+  twitter: "",
+  facebook: "",
+  linkedin: "",
+  youtube: "",
+  instagram: "",
 };
 
 const ProfileForm = ({
   profile: { profile, loading },
   createProfile,
   getCurrentProfile,
-  history
+  history,
 }) => {
   const [formData, setFormData] = useState(initialState);
 
@@ -40,7 +62,7 @@ const ProfileForm = ({
         if (key in profileData) profileData[key] = profile.social[key];
       }
       if (Array.isArray(profileData.skills))
-        profileData.skills = profileData.skills.join(', ');
+        profileData.skills = profileData.skills.join(", ");
       setFormData(profileData);
     }
   }, [loading, getCurrentProfile, profile]);
@@ -57,7 +79,7 @@ const ProfileForm = ({
     facebook,
     linkedin,
     youtube,
-    instagram
+    instagram,
   } = formData;
 
   const onChange = (e) =>
@@ -68,188 +90,212 @@ const ProfileForm = ({
     createProfile(formData, history, profile ? true : false);
   };
 
+  const slctStyle = selectStyle();
+  const txfStyle = textFieldStyle();
+  const btnStyle = buttonStyle();
+  const icnStyle = iconStyle();
+  const classes = loginStyle();
+
   return (
-    <Fragment>
-      <h1 className="large text-primary">Edit Your Profile</h1>
-      <p className="lead">
-        <i className="fas fa-user" /> Add some changes to your profile
-      </p>
-      <small>* = required field</small>
-      <form className="form" onSubmit={onSubmit}>
-        <div className="form-group">
-          <select name="status" value={status} onChange={onChange}>
-            <option>* Select Professional Status</option>
-            <option value="Developer">Developer</option>
-            <option value="Junior Developer">Junior Developer</option>
-            <option value="Senior Developer">Senior Developer</option>
-            <option value="Manager">Manager</option>
-            <option value="Student or Learning">Student or Learning</option>
-            <option value="Instructor">Instructor or Teacher</option>
-            <option value="Intern">Intern</option>
-            <option value="Other">Other</option>
-          </select>
-          <small className="form-text">
-            Give us an idea of where you are at in your career
-          </small>
-        </div>
-        <div className="form-group">
-          <input
-            type="text"
-            placeholder="Company"
-            name="company"
-            value={company}
-            onChange={onChange}
-          />
-          <small className="form-text">
-            Could be your own company or one you work for
-          </small>
-        </div>
-        <div className="form-group">
-          <input
-            type="text"
-            placeholder="Website"
-            name="website"
-            value={website}
-            onChange={onChange}
-          />
-          <small className="form-text">
-            Could be your own or a company website
-          </small>
-        </div>
-        <div className="form-group">
-          <input
-            type="text"
-            placeholder="Location"
-            name="location"
-            value={location}
-            onChange={onChange}
-          />
-          <small className="form-text">
-            City & state suggested (eg. Boston, MA)
-          </small>
-        </div>
-        <div className="form-group">
-          <input
-            type="text"
-            placeholder="* Skills"
-            name="skills"
-            value={skills}
-            onChange={onChange}
-          />
-          <small className="form-text">
-            Please use comma separated values (eg. HTML,CSS,JavaScript,PHP)
-          </small>
-        </div>
-        <div className="form-group">
-          <input
-            type="text"
-            placeholder="Github Username"
-            name="githubusername"
-            value={githubusername}
-            onChange={onChange}
-          />
-          <small className="form-text">
-            If you want your latest repos and a Github link, include your
-            username
-          </small>
-        </div>
-        <div className="form-group">
-          <textarea
-            placeholder="A short bio of yourself"
-            name="bio"
-            value={bio}
-            onChange={onChange}
-          />
-          <small className="form-text">Tell us a little about yourself</small>
-        </div>
+    <Container component="main" maxWidth="xs">
+      <CssBaseline />
+      <div className={classes.paper}>
+        <h1 className="large text-primary">Edit Your Profile</h1>
+        <div className="m-1"></div>
+        <form onSubmit={onSubmit}>
+          <div className="m-1">
+            <Select
+              name="status"
+              value={status}
+              onChange={onChange}
+              className={slctStyle.primary}
+              variant="outlined"
+              required
+              label="Select Professional Status"
+            >
+              <MenuItem value="Developer">Developer</MenuItem>
+              <MenuItem value="Junior Developer">Junior Developer</MenuItem>
+              <MenuItem value="Senior Developer">Senior Developer</MenuItem>
+              <MenuItem value="Manager">Manager</MenuItem>
+              <MenuItem value="Student or Learning">
+                Student or Learning
+              </MenuItem>
+              <MenuItem value="Instructor">Instructor or Teacher</MenuItem>
+              <MenuItem value="Intern">Intern</MenuItem>
+              <MenuItem value="Other">Other</MenuItem>
+            </Select>
+          </div>
+          <div className="m-1">
+            <TextField
+              label="Company"
+              value={company}
+              onChange={onChange}
+              name="company"
+              variant="outlined"
+              className={txfStyle.medium}
+            />
+          </div>
+          <div className="m-1">
+            <LanguageIcon className={icnStyle.web}></LanguageIcon>
+            <TextField
+              label="Website"
+              value={website}
+              onChange={onChange}
+              name="website"
+              variant="outlined"
+              className={txfStyle.big}
+            />
+          </div>
+          <div className="m-1">
+            <TextField
+              label="Location"
+              value={location}
+              onChange={onChange}
+              name="location"
+              variant="outlined"
+              className={txfStyle.big}
+            />
+          </div>
+          <div className="m-1">
+            <TextField
+              label="Skills"
+              value={skills}
+              onChange={onChange}
+              name="skills"
+              variant="outlined"
+              className={txfStyle.big}
+              required
+            />
+            <small className="form-text">
+              Please use comma separated values (eg. HTML,CSS,JavaScript,PHP)
+            </small>
+          </div>
+          <div className="m-1">
+            <div>
+              <TextField
+                label="Github Username"
+                value={githubusername}
+                onChange={onChange}
+                name="githubusername"
+                variant="outlined"
+                className={txfStyle.medium}
+              />
+            </div>
+            <small className="form-text">
+              If you want your latest repos and a Github link, include your
+              username
+            </small>
+          </div>
+          <div>
+            <TextField
+              label="A short bio of yourself"
+              multiline
+              rows={8}
+              fullWidth
+              variant="outlined"
+              name="bio"
+              value={bio}
+              onChange={onChange}
+            />
+          </div>
 
-        <div className="my-2">
-          <button
-            onClick={() => toggleSocialInputs(!displaySocialInputs)}
-            type="button"
-            className="btn btn-light"
+          <div className="my-2">
+            <Button
+              onClick={() => toggleSocialInputs(!displaySocialInputs)}
+              className={btnStyle.primary}
+            >
+              Add Social Network Links
+            </Button>
+          </div>
+
+          {displaySocialInputs && (
+            <Fragment>
+              <div className="m-1 social-input">
+                <TwitterIcon className={icnStyle.twitter}></TwitterIcon>
+                <TextField
+                  label="Twitter URL"
+                  fullWidth
+                  variant="outlined"
+                  name="twitter"
+                  value={twitter}
+                  onChange={onChange}
+                />
+              </div>
+
+              <div className="m-1 social-input">
+                <FacebookIcon className={icnStyle.facebook}></FacebookIcon>
+                <TextField
+                  label="Facebook URL"
+                  fullWidth
+                  variant="outlined"
+                  name="facebook"
+                  value={facebook}
+                  onChange={onChange}
+                />
+              </div>
+
+              <div className="m-1 social-input">
+                <YouTubeIcon className={icnStyle.youtube}></YouTubeIcon>
+                <TextField
+                  label="YouTube URL"
+                  fullWidth
+                  variant="outlined"
+                  name="youtube"
+                  value={youtube}
+                  onChange={onChange}
+                />
+              </div>
+
+              <div className="m-1 social-input">
+                <LinkedInIcon className={icnStyle.linkedin}></LinkedInIcon>
+                <TextField
+                  label="Linkedin URL"
+                  fullWidth
+                  variant="outlined"
+                  name="linkedin"
+                  value={linkedin}
+                  onChange={onChange}
+                />
+              </div>
+
+              <div className="m-1 social-input">
+                <InstagramIcon className={icnStyle.instagram}></InstagramIcon>
+                <TextField
+                  label="Instagram URL"
+                  fullWidth
+                  variant="outlined"
+                  name="instagram"
+                  value={instagram}
+                  onChange={onChange}
+                />
+              </div>
+            </Fragment>
+          )}
+
+          <Button
+            type="submit"
+            variant="contained"
+            className={btnStyle.secondary}
           >
-            Add Social Network Links
-          </button>
-          <span>Optional</span>
-        </div>
-
-        {displaySocialInputs && (
-          <Fragment>
-            <div className="form-group social-input">
-              <i className="fab fa-twitter fa-2x" />
-              <input
-                type="text"
-                placeholder="Twitter URL"
-                name="twitter"
-                value={twitter}
-                onChange={onChange}
-              />
-            </div>
-
-            <div className="form-group social-input">
-              <i className="fab fa-facebook fa-2x" />
-              <input
-                type="text"
-                placeholder="Facebook URL"
-                name="facebook"
-                value={facebook}
-                onChange={onChange}
-              />
-            </div>
-
-            <div className="form-group social-input">
-              <i className="fab fa-youtube fa-2x" />
-              <input
-                type="text"
-                placeholder="YouTube URL"
-                name="youtube"
-                value={youtube}
-                onChange={onChange}
-              />
-            </div>
-
-            <div className="form-group social-input">
-              <i className="fab fa-linkedin fa-2x" />
-              <input
-                type="text"
-                placeholder="Linkedin URL"
-                name="linkedin"
-                value={linkedin}
-                onChange={onChange}
-              />
-            </div>
-
-            <div className="form-group social-input">
-              <i className="fab fa-instagram fa-2x" />
-              <input
-                type="text"
-                placeholder="Instagram URL"
-                name="instagram"
-                value={instagram}
-                onChange={onChange}
-              />
-            </div>
-          </Fragment>
-        )}
-
-        <input type="submit" className="btn btn-primary my-1" />
-        <Link className="btn btn-light my-1" to="/dashboard">
-          Go Back
-        </Link>
-      </form>
-    </Fragment>
+            Submit
+          </Button>
+          <Button className={btnStyle.cancel} href="/dashboard">
+            Go Back
+          </Button>
+        </form>
+      </div>
+    </Container>
   );
 };
 
 ProfileForm.propTypes = {
   createProfile: PropTypes.func.isRequired,
   getCurrentProfile: PropTypes.func.isRequired,
-  profile: PropTypes.object.isRequired
+  profile: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = (state) => ({
-  profile: state.profile
+  profile: state.profile,
 });
 
 export default connect(mapStateToProps, { createProfile, getCurrentProfile })(

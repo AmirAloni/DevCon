@@ -6,6 +6,9 @@ import DashboardActions from './DashboardActions';
 import Experience from './Experience';
 import Education from './Education';
 import { getCurrentProfile, deleteAccount } from '../../actions/profile';
+import { Container, CssBaseline, Button } from '@material-ui/core';
+import {buttonStyle} from '../Styles'
+
 
 const Dashboard = ({
   getCurrentProfile,
@@ -17,22 +20,25 @@ const Dashboard = ({
     getCurrentProfile();
   }, [getCurrentProfile]);
 
+  const btnStyle = buttonStyle();
+
+
   return (
     <Fragment>
-      <h1 className="large text-primary">Dashboard</h1>
-      <p className="lead">
-        <i className="fas fa-user" /> Welcome {user && user.name}
-      </p>
+    <CssBaseline />
+    <Container maxWidth="sm">
+      <h1 className="large text-primary">{user && user.name.charAt(0).toUpperCase() + user.name.slice(1)}'s Dashboard</h1>
+
       {profile !== null ? (
         <Fragment>
           <DashboardActions />
-          <Experience experience={profile.experience} />
-          <Education education={profile.education} />
+          {profile.experience.length > 0 ? <Experience experience={profile.experience} />:<div></div>}
+          {profile.education.length > 0 ? <Education education={profile.education} />:<div></div>}
 
           <div className="my-2">
-            <button className="btn btn-danger" onClick={() => deleteAccount()}>
-              <i className="fas fa-user-minus" /> Delete My Account
-            </button>
+            <Button className={btnStyle.delete} onClick={() => deleteAccount()}>
+               Delete My Account
+            </Button>
           </div>
         </Fragment>
       ) : (
@@ -42,8 +48,8 @@ const Dashboard = ({
             Create Profile
           </Link>
         </Fragment>
-      )}
-    </Fragment>
+      )}    </Container>
+  </Fragment>
   );
 };
 
