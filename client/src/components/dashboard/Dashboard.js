@@ -27,7 +27,7 @@ const Dashboard = ({
     <Fragment>
     <CssBaseline />
     <Container maxWidth="sm">
-      <h1 className="large text-primary">{user && user.name.charAt(0).toUpperCase() + user.name.slice(1)}'s Dashboard</h1>
+      <h1 className="large text-primary">{user.name && user.name.charAt(0).toUpperCase() + user.name.slice(1)}'s Dashboard</h1>
 
       {profile !== null ? (
         <Fragment>
