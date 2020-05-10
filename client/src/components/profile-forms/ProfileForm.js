@@ -45,7 +45,7 @@ const ProfileForm = ({
   profile: { profile, loading },
   createProfile,
   getCurrentProfile,
-  history,
+  history
 }) => {
   const [formData, setFormData] = useState(initialState);
 
@@ -225,6 +225,7 @@ const ProfileForm = ({
               <div className="m-1 social-input">
                 <FacebookIcon className={icnStyle.facebook}></FacebookIcon>
                 <TextField
+                  type="link"
                   label="Facebook URL"
                   fullWidth
                   variant="outlined"

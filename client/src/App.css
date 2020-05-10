@@ -375,8 +375,9 @@ button {
 
 .bgimage {
   position: relative;
-  background: url("./img/developerBackground.png") no-repeat center center/cover;
-  height: 100vh;
+  background: url("./img/developerBackground.jpg") no-repeat center center/cover;
+  height: 45vh;
+  color: #fff;
 }
 
 .profile-top {
