@@ -65,7 +65,7 @@ const Dashboard = ({
       <CssBaseline />
       <Container maxWidth="sm">
         <h1 className="large text-primary">
-          {user.name && user.name.charAt(0).toUpperCase() + user.name.slice(1)}
+          {user && user.name && user.name.charAt(0).toUpperCase() + user.name.slice(1)}
           's Dashboard
         </h1>
         {profile !== null ? (
