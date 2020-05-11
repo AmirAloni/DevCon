@@ -12,13 +12,16 @@ import {
   CssBaseline,
   Typography,
 } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
 import {
-  buttonStyle,
-  selectStyle,
-  textFieldStyle,
-  loginStyle,
-  iconStyle,
-} from "../Styles";
+  lightBlue,
+  blueGrey,
+  red,
+  blue,
+  grey,
+  pink,
+  indigo,
+} from "@material-ui/core/colors";
 import FacebookIcon from "@material-ui/icons/Facebook";
 import InstagramIcon from "@material-ui/icons/Instagram";
 import LinkedInIcon from "@material-ui/icons/LinkedIn";
@@ -50,6 +53,112 @@ const ProfileForm = ({
   const [formData, setFormData] = useState(initialState);
 
   const [displaySocialInputs, toggleSocialInputs] = useState(false);
+
+  const textFieldStyle = makeStyles({
+    small: {
+      fontSize: 18,
+      minWidth: '200px'
+    },
+    medium: {
+      fontSize: 18,
+      minWidth: '400px'
+    },
+    big: {
+      fontSize: 18,
+      minWidth: '800px'
+    }
+  });
+  
+  const buttonStyle = makeStyles({
+    profileItems: {
+      backgroundColor: blueGrey[400],
+      color: blueGrey[50]
+    },
+    primary: {
+      backgroundColor: blueGrey[500],
+      color: blueGrey[50],
+      minHeight: '40px',
+      margin: '5px'
+    },
+    secondary:{
+      backgroundColor: blue[300],
+      color: blue[50],
+      minHeight: '40px',
+      margin: '5px'
+    },
+    cancel:{
+      backgroundColor: grey[500],
+      color: grey[50],
+      minHeight: '40px',
+      margin: '5px'
+    },
+    delete:{
+      backgroundColor: red[400],
+      color: red[50],
+      minHeight: '40px',
+      margin: '5px'
+    }
+  });
+
+   const loginStyle = makeStyles((theme) => ({
+    paper: {
+      marginTop: theme.spacing(8),
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+    },
+    form: {
+      width: '100%',
+      marginTop: theme.spacing(1)
+    },
+    submit: {
+      margin: theme.spacing(3, 0, 2),
+      backgroundColor: blue[300],
+      color: blue[50],
+      fontSize: 18
+    },
+    title:{
+      color: blueGrey[500],
+      fontSize: 45
+    },
+    link:{
+      color: blue[300],
+      fontSize: 14
+    }
+  }));
+
+ const selectStyle = makeStyles({
+    primary: {
+      fontSize: 18,
+      minWidth: '300px'
+    }
+  });
+
+   const iconStyle = makeStyles({
+    facebook: {
+      color: blue[800]
+    },
+    instagram:{
+      color: pink[200]
+    },
+    linkedin:{
+      color: indigo[500]
+    },
+    web:{
+      color: blueGrey[500]
+    },
+    twitter:{
+      color: blue[500]
+    },
+    youtube:{
+      color: red[500]
+    }
+  });
+  const txfStyle = textFieldStyle();
+  const btnStyle = buttonStyle();
+  const classes = loginStyle();
+  const slctStyle = selectStyle();
+  const icnStyle = iconStyle();
 
   useEffect(() => {
     if (!profile) getCurrentProfile();
@@ -89,12 +198,6 @@ const ProfileForm = ({
     e.preventDefault();
     createProfile(formData, history, profile ? true : false);
   };
-
-  const slctStyle = selectStyle();
-  const txfStyle = textFieldStyle();
-  const btnStyle = buttonStyle();
-  const icnStyle = iconStyle();
-  const classes = loginStyle();
 
   return (
     <Container component="main" maxWidth="xs">

@@ -1,5 +1,5 @@
 import React, { Fragment, useState } from "react";
-import { Link, withRouter } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { addEducation } from "../../actions/profile";
@@ -11,7 +11,16 @@ import {
   FormControlLabel,
   Checkbox,
 } from "@material-ui/core";
-import { buttonStyle, textFieldStyle, loginStyle } from "../Styles";
+import { makeStyles } from "@material-ui/core/styles";
+import {
+  lightBlue,
+  blueGrey,
+  red,
+  blue,
+  grey,
+  pink,
+  indigo,
+} from "@material-ui/core/colors";
 
 const AddEducation = ({ addEducation, history }) => {
   const [formData, setFormData] = useState({
@@ -36,6 +45,83 @@ const AddEducation = ({ addEducation, history }) => {
     current,
   } = formData;
 
+  const textFieldStyle = makeStyles({
+    small: {
+      fontSize: 18,
+      minWidth: '200px'
+    },
+    medium: {
+      fontSize: 18,
+      minWidth: '400px'
+    },
+    big: {
+      fontSize: 18,
+      minWidth: '800px'
+    }
+  });
+  
+  const buttonStyle = makeStyles({
+    profileItems: {
+      backgroundColor: blueGrey[400],
+      color: blueGrey[50]
+    },
+    primary: {
+      backgroundColor: blueGrey[500],
+      color: blueGrey[50],
+      minHeight: '40px',
+      margin: '5px'
+    },
+    secondary:{
+      backgroundColor: blue[300],
+      color: blue[50],
+      minHeight: '40px',
+      margin: '5px'
+    },
+    cancel:{
+      backgroundColor: grey[500],
+      color: grey[50],
+      minHeight: '40px',
+      margin: '5px'
+    },
+    delete:{
+      backgroundColor: red[400],
+      color: red[50],
+      minHeight: '40px',
+      margin: '5px'
+    }
+  });
+
+   const loginStyle = makeStyles((theme) => ({
+    paper: {
+      marginTop: theme.spacing(8),
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+    },
+    form: {
+      width: '100%',
+      marginTop: theme.spacing(1)
+    },
+    submit: {
+      margin: theme.spacing(3, 0, 2),
+      backgroundColor: blue[300],
+      color: blue[50],
+      fontSize: 18
+    },
+    title:{
+      color: blueGrey[500],
+      fontSize: 45
+    },
+    link:{
+      color: blue[300],
+      fontSize: 14
+    }
+  }));
+
+  const txfStyle = textFieldStyle();
+  const btnStyle = buttonStyle();
+  const classes = loginStyle();
+  
   const onChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
@@ -43,11 +129,6 @@ const AddEducation = ({ addEducation, history }) => {
     e.preventDefault();
     addEducation(formData, history);
   };
-
-
-  const txfStyle = textFieldStyle();
-  const btnStyle = buttonStyle();
-  const classes = loginStyle();
 
   return (
     <Container component="main" maxWidth="xs">

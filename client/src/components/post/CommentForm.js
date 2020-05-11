@@ -3,13 +3,52 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { addComment } from "../../actions/post";
 import { Button } from "@material-ui/core";
-import { buttonStyle, lineStyle } from "../Styles";
+import { makeStyles } from "@material-ui/core/styles";
+import {
+  lightBlue,
+  blueGrey,
+  red,
+  blue,
+  grey,
+  pink,
+  indigo,
+} from "@material-ui/core/colors";
 
 const CommentForm = ({ postId, addComment }) => {
   const [text, setText] = useState("");
 
+  const btnStyle = makeStyles({
+    profileItems: {
+      backgroundColor: blueGrey[400],
+      color: blueGrey[50],
+    },
+    primary: {
+      backgroundColor: blueGrey[500],
+      color: blueGrey[50],
+      minHeight: "40px",
+      margin: "5px",
+    },
+    secondary: {
+      backgroundColor: blue[300],
+      color: blue[50],
+      minHeight: "40px",
+      margin: "5px",
+    },
+    cancel: {
+      backgroundColor: grey[500],
+      color: grey[50],
+      minHeight: "40px",
+      margin: "5px",
+    },
+    delete: {
+      backgroundColor: red[400],
+      color: red[50],
+      minHeight: "40px",
+      margin: "5px",
+    },
+  });
+
   const btnStyle = buttonStyle();
-  const lnStyle = lineStyle();
 
   return (
     <div className="post-form">

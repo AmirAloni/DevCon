@@ -18,6 +18,36 @@ const Profile = ({ getProfileById, profile: { profile }, auth, match }) => {
     getProfileById(match.params.id);
   }, [getProfileById, match.params.id, nullProfile]);
   
+  const btnStyle = makeStyles({
+    profileItems: {
+      backgroundColor: blueGrey[400],
+      color: blueGrey[50]
+    },
+    primary: {
+      backgroundColor: blueGrey[500],
+      color: blueGrey[50],
+      minHeight: '40px',
+      margin: '5px'
+    },
+    secondary:{
+      backgroundColor: blue[300],
+      color: blue[50],
+      minHeight: '40px',
+      margin: '5px'
+    },
+    cancel:{
+      backgroundColor: grey[500],
+      color: grey[50],
+      minHeight: '40px',
+      margin: '5px'
+    },
+    delete:{
+      backgroundColor: red[400],
+      color: red[50],
+      minHeight: '40px',
+      margin: '5px'
+    }
+  });
   const btnStyle = buttonStyle();
 
   return (

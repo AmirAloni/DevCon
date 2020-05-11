@@ -11,11 +11,17 @@ import {
   FormControlLabel,
   Checkbox
 } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
 import {
-  buttonStyle,
-  textFieldStyle,
-  loginStyle
-} from "../Styles";
+  lightBlue,
+  blueGrey,
+  red,
+  blue,
+  grey,
+  pink,
+  indigo,
+} from "@material-ui/core/colors";
+
 const AddExperience = ({ addExperience, history }) => {
   const [formData, setFormData] = useState({
     company: '',
@@ -26,6 +32,83 @@ const AddExperience = ({ addExperience, history }) => {
     current: false,
     description: ''
   });
+
+  const textFieldStyle = makeStyles({
+    small: {
+      fontSize: 18,
+      minWidth: '200px'
+    },
+    medium: {
+      fontSize: 18,
+      minWidth: '400px'
+    },
+    big: {
+      fontSize: 18,
+      minWidth: '800px'
+    }
+  });
+  
+  const buttonStyle = makeStyles({
+    profileItems: {
+      backgroundColor: blueGrey[400],
+      color: blueGrey[50]
+    },
+    primary: {
+      backgroundColor: blueGrey[500],
+      color: blueGrey[50],
+      minHeight: '40px',
+      margin: '5px'
+    },
+    secondary:{
+      backgroundColor: blue[300],
+      color: blue[50],
+      minHeight: '40px',
+      margin: '5px'
+    },
+    cancel:{
+      backgroundColor: grey[500],
+      color: grey[50],
+      minHeight: '40px',
+      margin: '5px'
+    },
+    delete:{
+      backgroundColor: red[400],
+      color: red[50],
+      minHeight: '40px',
+      margin: '5px'
+    }
+  });
+
+   const loginStyle = makeStyles((theme) => ({
+    paper: {
+      marginTop: theme.spacing(8),
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+    },
+    form: {
+      width: '100%',
+      marginTop: theme.spacing(1)
+    },
+    submit: {
+      margin: theme.spacing(3, 0, 2),
+      backgroundColor: blue[300],
+      color: blue[50],
+      fontSize: 18
+    },
+    title:{
+      color: blueGrey[500],
+      fontSize: 45
+    },
+    link:{
+      color: blue[300],
+      fontSize: 14
+    }
+  }));
+
+  const txfStyle = textFieldStyle();
+  const btnStyle = buttonStyle();
+  const classes = loginStyle();
 
   const [toDateDisabled, toggleDisabled] = useState(false);
 
@@ -38,10 +121,6 @@ const AddExperience = ({ addExperience, history }) => {
       e.preventDefault();
       addExperience(formData, history);
     };
-
-    const txfStyle = textFieldStyle();
-    const btnStyle = buttonStyle();
-    const classes = loginStyle();
 
   return (
     <Container component="main" maxWidth="xs">
