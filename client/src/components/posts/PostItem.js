@@ -25,7 +25,7 @@ const PostItem = ({
   showActions
 }) => {
 
-  const btnStyle = makeStyles({
+  const buttonStyle = makeStyles({
     profileItems: {
       backgroundColor: blueGrey[400],
       color: blueGrey[50]

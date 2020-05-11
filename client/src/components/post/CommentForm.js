@@ -17,7 +17,7 @@ import {
 const CommentForm = ({ postId, addComment }) => {
   const [text, setText] = useState("");
 
-  const btnStyle = makeStyles({
+  const buttonStyle = makeStyles({
     profileItems: {
       backgroundColor: blueGrey[400],
       color: blueGrey[50],
@@ -47,13 +47,33 @@ const CommentForm = ({ postId, addComment }) => {
       margin: "5px",
     },
   });
-
+  const linkStyle = makeStyles({
+    main: {
+      color: lightBlue[500],
+      fontSize: 20,
+      padding: "30px 30px 30px 30px"
+    },
+    smallWhite: {
+      color: lightBlue[50],
+      fontSize: 18,
+      padding: "0px 10px 0px 10px",
+      flexGrow: 1
+    },
+    bigWhite: {
+      color: lightBlue[50],
+      fontSize: 32,
+      padding: "0px 10px 0px 10px",
+      flexGrow: 1
+    }
+  });
+  
+  const lnkStyle = linkStyle();
   const btnStyle = buttonStyle();
 
   return (
     <div className="post-form">
       <h2>Discussion</h2>
-      <hr className={lnStyle.primary}></hr>
+      <hr className={lnkStyle.primary}></hr>
       <form
         className="form my-1"
         onSubmit={(e) => {

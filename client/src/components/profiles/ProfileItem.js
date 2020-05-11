@@ -22,7 +22,7 @@ const ProfileItem = ({
   }
 }) => {
 
-  export const buttonStyle = makeStyles({
+   const buttonStyle = makeStyles({
     profileItems: {
       backgroundColor: blueGrey[400],
       color: blueGrey[50]

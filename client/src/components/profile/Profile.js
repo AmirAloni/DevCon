@@ -10,7 +10,16 @@ import ProfileEducation from "./ProfileEducation";
 import ProfileGithub from "./ProfileGithub";
 import { getProfileById } from "../../actions/profile";
 import { Button } from "@material-ui/core";
-import { buttonStyle } from "../Styles";
+import { makeStyles } from "@material-ui/core/styles";
+import {
+  lightBlue,
+  blueGrey,
+  red,
+  blue,
+  grey,
+  pink,
+  indigo,
+} from "@material-ui/core/colors";
 
 const Profile = ({ getProfileById, profile: { profile }, auth, match }) => {
   const nullProfile = !profile;
@@ -18,7 +27,7 @@ const Profile = ({ getProfileById, profile: { profile }, auth, match }) => {
     getProfileById(match.params.id);
   }, [getProfileById, match.params.id, nullProfile]);
   
-  const btnStyle = makeStyles({
+  const buttonStyle = makeStyles({
     profileItems: {
       backgroundColor: blueGrey[400],
       color: blueGrey[50]
