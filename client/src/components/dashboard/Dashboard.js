@@ -17,9 +17,6 @@ const Dashboard = ({
   auth: { user },
   profile: { profile }
 }) => {
-  useEffect(() => {
-    getCurrentProfile();
-  }, [getCurrentProfile]);
 
   const buttonStyle = makeStyles({
     profileItems: {
@@ -52,6 +49,10 @@ const Dashboard = ({
     }
   });
   const btnStyle = buttonStyle();
+  
+  useEffect(() => {
+    getCurrentProfile();
+  }, [getCurrentProfile]);
 
   return (
     <Fragment>

@@ -1,69 +1,76 @@
-import React, { useState } from 'react';
-import { connect } from 'react-redux';
-import { Redirect } from 'react-router-dom';
-import PropTypes from 'prop-types';
-import Button from '@material-ui/core/Button';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import TextField from '@material-ui/core/TextField';
-import Link from '@material-ui/core/Link';
-import Grid from '@material-ui/core/Grid';
-import Typography from '@material-ui/core/Typography';
-import Container from '@material-ui/core/Container';
-import { register } from '../../actions/auth';
-import { makeStyles } from '@material-ui/core/styles';
-import {lightBlue, blueGrey, red, blue, grey, pink, indigo} from '@material-ui/core/colors';
-import { setAlert } from '../../actions/alert';
-
+import React, { useState } from "react";
+import { connect } from "react-redux";
+import { Redirect } from "react-router-dom";
+import PropTypes from "prop-types";
+import Button from "@material-ui/core/Button";
+import CssBaseline from "@material-ui/core/CssBaseline";
+import TextField from "@material-ui/core/TextField";
+import Link from "@material-ui/core/Link";
+import Grid from "@material-ui/core/Grid";
+import Typography from "@material-ui/core/Typography";
+import Container from "@material-ui/core/Container";
+import { register } from "../../actions/auth";
+import { makeStyles } from "@material-ui/core/styles";
+import {
+  lightBlue,
+  blueGrey,
+  red,
+  blue,
+  grey,
+  pink,
+  indigo,
+} from "@material-ui/core/colors";
+import { setAlert } from "../../actions/alert";
 
 const Register = ({ setAlert, register, isAuthenticated }) => {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    password: '',
-    password2: ''
+    name: "",
+    email: "",
+    password: "",
+    password2: "",
   });
 
   const { name, email, password, password2 } = formData;
 
-  const onChange = e =>
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-
-  const onSubmit = async e => {
-    e.preventDefault();
-    if (password !== password2) {
-      setAlert('Passwords do not match', 'danger');
-    } else {
-      register({ name, email, password });
-    }
-  };
-
   const loginStyle = makeStyles((theme) => ({
     paper: {
       marginTop: theme.spacing(8),
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'center',
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center",
     },
     form: {
-      width: '100%',
-      marginTop: theme.spacing(1)
+      width: "100%",
+      marginTop: theme.spacing(1),
     },
     submit: {
       margin: theme.spacing(3, 0, 2),
       backgroundColor: blue[300],
       color: blue[50],
-      fontSize: 18
+      fontSize: 18,
     },
-    title:{
+    title: {
       color: blueGrey[500],
-      fontSize: 45
+      fontSize: 45,
     },
-    link:{
+    link: {
       color: blue[300],
-      fontSize: 14
-    }
+      fontSize: 14,
+    },
   }));
   const classes = loginStyle();
+
+  const onChange = (e) =>
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+
+  const onSubmit = async (e) => {
+    e.preventDefault();
+    if (password !== password2) {
+      setAlert("Passwords do not match", "danger");
+    } else {
+      register({ name, email, password });
+    }
+  };
 
   if (isAuthenticated) {
     return <Redirect to="/dashboard" />;
@@ -73,11 +80,9 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
     <Container component="main" maxWidth="xs">
       <CssBaseline />
       <div className={classes.paper}>
-        <Typography className={classes.title}>
-          Sign up
-        </Typography>
-        <form className={classes.form} noValidate onSubmit={e => onSubmit(e)}>
-        <TextField
+        <Typography className={classes.title}>Sign up</Typography>
+        <form className={classes.form} noValidate onSubmit={(e) => onSubmit(e)}>
+          <TextField
             variant="outlined"
             margin="normal"
             required
@@ -88,8 +93,8 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
             autoComplete="name"
             autoFocus
             value={name}
-            onChange={e => onChange(e)}
-          /> 
+            onChange={(e) => onChange(e)}
+          />
           <TextField
             variant="outlined"
             margin="normal"
@@ -101,7 +106,7 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
             autoComplete="email"
             autoFocus
             value={email}
-            onChange={e => onChange(e)}
+            onChange={(e) => onChange(e)}
           />
           <TextField
             variant="outlined"
@@ -114,7 +119,7 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
             id="password"
             autoComplete="current-password"
             value={password}
-            onChange={e => onChange(e)}
+            onChange={(e) => onChange(e)}
           />
           <TextField
             variant="outlined"
@@ -127,7 +132,7 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
             id="password2"
             autoComplete="current-password"
             value={password2}
-            onChange={e => onChange(e)}
+            onChange={(e) => onChange(e)}
           />
           <Button
             type="submit"
@@ -139,7 +144,7 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
           </Button>
           <Grid container>
             <Grid item>
-              <Link href='/login' className={classes.link}>
+              <Link href="/login" className={classes.link}>
                 {"Already have an account? Sign in"}
               </Link>
             </Grid>
@@ -148,19 +153,16 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
       </div>
     </Container>
   );
-}
+};
 
 Register.propTypes = {
   setAlert: PropTypes.func.isRequired,
   register: PropTypes.func.isRequired,
-  isAuthenticated: PropTypes.bool
+  isAuthenticated: PropTypes.bool,
 };
 
-const mapStateToProps = state => ({
-  isAuthenticated: state.auth.isAuthenticated
+const mapStateToProps = (state) => ({
+  isAuthenticated: state.auth.isAuthenticated,
 });
 
-export default connect(
-  mapStateToProps,
-  { setAlert, register }
-)(Register);
+export default connect(mapStateToProps, { setAlert, register })(Register);
