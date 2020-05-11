@@ -95,14 +95,14 @@ import {lightBlue, blueGrey, red, blue, grey, pink, indigo} from '@material-ui/c
             value={password}
             onChange={e => onChange(e)}
           />
-          <Button
+          <Link
             type="submit"
             fullWidth
             variant="contained"
             className={classes.submit}
           >
             Sign In
-          </Button>
+          </Link>
           <Grid container>
             <Grid item>
               <Link href='/register' className={classes.link}>
