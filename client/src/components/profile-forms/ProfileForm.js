@@ -1,33 +1,31 @@
-import React, { Fragment, useState, useEffect } from "react";
-import { Link, withRouter } from "react-router-dom";
-import PropTypes from "prop-types";
-import { connect } from "react-redux";
-import { createProfile, getCurrentProfile } from "../../actions/profile";
 import {
   Button,
-  Select,
-  MenuItem,
-  TextField,
   Container,
   CssBaseline,
-  Typography,
+  MenuItem,
+  Select,
+  TextField,
 } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
 import {
-  lightBlue,
-  blueGrey,
-  red,
   blue,
+  blueGrey,
   grey,
-  pink,
   indigo,
+  pink,
+  red,
 } from "@material-ui/core/colors";
+import { makeStyles } from "@material-ui/core/styles";
 import FacebookIcon from "@material-ui/icons/Facebook";
 import InstagramIcon from "@material-ui/icons/Instagram";
-import LinkedInIcon from "@material-ui/icons/LinkedIn";
 import LanguageIcon from "@material-ui/icons/Language";
+import LinkedInIcon from "@material-ui/icons/LinkedIn";
 import TwitterIcon from "@material-ui/icons/Twitter";
 import YouTubeIcon from "@material-ui/icons/YouTube";
+import PropTypes from "prop-types";
+import React, { Fragment, useEffect, useState } from "react";
+import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
+import { createProfile, getCurrentProfile } from "../../actions/profile";
 
 const initialState = {
   company: "",
@@ -48,7 +46,7 @@ const ProfileForm = ({
   profile: { profile, loading },
   createProfile,
   getCurrentProfile,
-  history
+  history,
 }) => {
   const [formData, setFormData] = useState(initialState);
 
@@ -57,102 +55,102 @@ const ProfileForm = ({
   const textFieldStyle = makeStyles({
     small: {
       fontSize: 18,
-      minWidth: '200px'
+      minWidth: "200px",
     },
     medium: {
       fontSize: 18,
-      minWidth: '400px'
+      minWidth: "400px",
     },
     big: {
       fontSize: 18,
-      minWidth: '800px'
-    }
+      minWidth: "800px",
+    },
   });
-  
+
   const buttonStyle = makeStyles({
     profileItems: {
       backgroundColor: blueGrey[400],
-      color: blueGrey[50]
+      color: blueGrey[50],
     },
     primary: {
       backgroundColor: blueGrey[500],
       color: blueGrey[50],
-      minHeight: '40px',
-      margin: '5px'
+      minHeight: "40px",
+      margin: "5px",
     },
-    secondary:{
+    secondary: {
       backgroundColor: blue[300],
       color: blue[50],
-      minHeight: '40px',
-      margin: '5px'
+      minHeight: "40px",
+      margin: "5px",
     },
-    cancel:{
+    cancel: {
       backgroundColor: grey[500],
       color: grey[50],
-      minHeight: '40px',
-      margin: '5px'
+      minHeight: "40px",
+      margin: "5px",
     },
-    delete:{
+    delete: {
       backgroundColor: red[400],
       color: red[50],
-      minHeight: '40px',
-      margin: '5px'
-    }
+      minHeight: "40px",
+      margin: "5px",
+    },
   });
 
-   const loginStyle = makeStyles((theme) => ({
+  const loginStyle = makeStyles((theme) => ({
     paper: {
       marginTop: theme.spacing(8),
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'center',
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center",
     },
     form: {
-      width: '100%',
-      marginTop: theme.spacing(1)
+      width: "100%",
+      marginTop: theme.spacing(1),
     },
     submit: {
       margin: theme.spacing(3, 0, 2),
       backgroundColor: blue[300],
       color: blue[50],
-      fontSize: 18
+      fontSize: 18,
     },
-    title:{
+    title: {
       color: blueGrey[500],
-      fontSize: 45
+      fontSize: 45,
     },
-    link:{
+    link: {
       color: blue[300],
-      fontSize: 14
-    }
+      fontSize: 14,
+    },
   }));
 
- const selectStyle = makeStyles({
+  const selectStyle = makeStyles({
     primary: {
       fontSize: 18,
-      minWidth: '300px'
-    }
+      minWidth: "300px",
+    },
   });
 
-   const iconStyle = makeStyles({
+  const iconStyle = makeStyles({
     facebook: {
-      color: blue[800]
+      color: blue[800],
     },
-    instagram:{
-      color: pink[200]
+    instagram: {
+      color: pink[200],
     },
-    linkedin:{
-      color: indigo[500]
+    linkedin: {
+      color: indigo[500],
     },
-    web:{
-      color: blueGrey[500]
+    web: {
+      color: blueGrey[500],
     },
-    twitter:{
-      color: blue[500]
+    twitter: {
+      color: blue[500],
     },
-    youtube:{
-      color: red[500]
-    }
+    youtube: {
+      color: red[500],
+    },
   });
   const txfStyle = textFieldStyle();
   const btnStyle = buttonStyle();
@@ -214,7 +212,7 @@ const ProfileForm = ({
               className={slctStyle.primary}
               variant="outlined"
               required
-              label="Select Professional Status"
+              defaultValue="Developer"
             >
               <MenuItem value="Developer">Developer</MenuItem>
               <MenuItem value="Junior Developer">Junior Developer</MenuItem>

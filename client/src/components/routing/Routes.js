@@ -1,20 +1,20 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
-import Register from '../auth/Register';
 import Login from '../auth/Login';
-import Alert from '../layout/Alert';
+import Register from '../auth/Register';
 import Dashboard from '../dashboard/Dashboard';
-import ProfileForm from '../profile-forms/ProfileForm';
-import AddExperience from '../profile-forms/AddExperience';
-import AddEducation from '../profile-forms/AddEducation';
-import Profiles from '../profiles/Profiles';
-import Profile from '../profile/Profile';
-import Posts from '../posts/Posts';
-import Post from '../post/Post';
+import Alert from '../layout/Alert';
 import NotFound from '../layout/NotFound';
+import Post from '../post/Post';
+import Posts from '../posts/Posts';
+import AddEducation from '../profile-forms/AddEducation';
+import AddExperience from '../profile-forms/AddExperience';
+import ProfileForm from '../profile-forms/ProfileForm';
+import Profile from '../profile/Profile';
+import Profiles from '../profiles/Profiles';
 import PrivateRoute from '../routing/PrivateRoute';
 
-const Routes = props => {
+const Routes = (props) => {
   return (
     <section className="container">
       <Alert />

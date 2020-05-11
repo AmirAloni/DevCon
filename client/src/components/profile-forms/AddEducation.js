@@ -1,26 +1,11 @@
-import React, { Fragment, useState } from "react";
-import { withRouter } from "react-router-dom";
-import PropTypes from "prop-types";
-import { connect } from "react-redux";
-import { addEducation } from "../../actions/profile";
-import {
-  Button,
-  TextField,
-  Container,
-  CssBaseline,
-  FormControlLabel,
-  Checkbox,
-} from "@material-ui/core";
+import { Button, Checkbox, Container, CssBaseline, FormControlLabel, TextField } from "@material-ui/core";
+import { blue, blueGrey, grey, red } from "@material-ui/core/colors";
 import { makeStyles } from "@material-ui/core/styles";
-import {
-  lightBlue,
-  blueGrey,
-  red,
-  blue,
-  grey,
-  pink,
-  indigo,
-} from "@material-ui/core/colors";
+import PropTypes from "prop-types";
+import React, { useState } from "react";
+import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
+import { addEducation } from "../../actions/profile";
 
 const AddEducation = ({ addEducation, history }) => {
   const [formData, setFormData] = useState({
@@ -48,80 +33,80 @@ const AddEducation = ({ addEducation, history }) => {
   const textFieldStyle = makeStyles({
     small: {
       fontSize: 18,
-      minWidth: '200px'
+      minWidth: "200px",
     },
     medium: {
       fontSize: 18,
-      minWidth: '400px'
+      minWidth: "400px",
     },
     big: {
       fontSize: 18,
-      minWidth: '800px'
-    }
+      minWidth: "800px",
+    },
   });
-  
+
   const buttonStyle = makeStyles({
     profileItems: {
       backgroundColor: blueGrey[400],
-      color: blueGrey[50]
+      color: blueGrey[50],
     },
     primary: {
       backgroundColor: blueGrey[500],
       color: blueGrey[50],
-      minHeight: '40px',
-      margin: '5px'
+      minHeight: "40px",
+      margin: "5px",
     },
-    secondary:{
+    secondary: {
       backgroundColor: blue[300],
       color: blue[50],
-      minHeight: '40px',
-      margin: '5px'
+      minHeight: "40px",
+      margin: "5px",
     },
-    cancel:{
+    cancel: {
       backgroundColor: grey[500],
       color: grey[50],
-      minHeight: '40px',
-      margin: '5px'
+      minHeight: "40px",
+      margin: "5px",
     },
-    delete:{
+    delete: {
       backgroundColor: red[400],
       color: red[50],
-      minHeight: '40px',
-      margin: '5px'
-    }
+      minHeight: "40px",
+      margin: "5px",
+    },
   });
 
-   const loginStyle = makeStyles((theme) => ({
+  const loginStyle = makeStyles((theme) => ({
     paper: {
       marginTop: theme.spacing(8),
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'center',
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center",
     },
     form: {
-      width: '100%',
-      marginTop: theme.spacing(1)
+      width: "100%",
+      marginTop: theme.spacing(1),
     },
     submit: {
       margin: theme.spacing(3, 0, 2),
       backgroundColor: blue[300],
       color: blue[50],
-      fontSize: 18
+      fontSize: 18,
     },
-    title:{
+    title: {
       color: blueGrey[500],
-      fontSize: 45
+      fontSize: 45,
     },
-    link:{
+    link: {
       color: blue[300],
-      fontSize: 14
-    }
+      fontSize: 14,
+    },
   }));
 
   const txfStyle = textFieldStyle();
   const btnStyle = buttonStyle();
   const classes = loginStyle();
-  
+
   const onChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
@@ -139,7 +124,7 @@ const AddEducation = ({ addEducation, history }) => {
         <form onSubmit={onSubmit}>
           <div className="m-1">
             <TextField
-            type="text"
+              type="text"
               label="School or Bootcamp"
               value={school}
               onChange={onChange}

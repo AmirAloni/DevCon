@@ -1,9 +1,9 @@
-import React, { Fragment, useEffect } from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import Spinner from '../layout/Spinner';
-import ProfileItem from './ProfileItem';
-import { getProfiles } from '../../actions/profile';
+import PropTypes from "prop-types";
+import React, { Fragment, useEffect } from "react";
+import { connect } from "react-redux";
+import { getProfiles } from "../../actions/profile";
+import Spinner from "../layout/Spinner";
+import ProfileItem from "./ProfileItem";
 
 const Profiles = ({ getProfiles, profile: { profiles, loading } }) => {
   useEffect(() => {
@@ -16,10 +16,10 @@ const Profiles = ({ getProfiles, profile: { profiles, loading } }) => {
         <Spinner />
       ) : (
         <Fragment>
-          <h3 className='large text-primary'>Developers</h3>
-          <div className='profiles'>
+          <h3 className="large text-primary">Developers</h3>
+          <div className="profiles">
             {profiles.length > 0 ? (
-              profiles.map(profile => (
+              profiles.map((profile) => (
                 <ProfileItem key={profile._id} profile={profile} />
               ))
             ) : (
@@ -34,14 +34,11 @@ const Profiles = ({ getProfiles, profile: { profiles, loading } }) => {
 
 Profiles.propTypes = {
   getProfiles: PropTypes.func.isRequired,
-  profile: PropTypes.object.isRequired
+  profile: PropTypes.object.isRequired,
 };
 
-const mapStateToProps = state => ({
-  profile: state.profile
+const mapStateToProps = (state) => ({
+  profile: state.profile,
 });
 
-export default connect(
-  mapStateToProps,
-  { getProfiles }
-)(Profiles);
+export default connect(mapStateToProps, { getProfiles })(Profiles);

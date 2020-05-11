@@ -1,16 +1,7 @@
-import React from "react";
-import { Link } from "react-router-dom";
 import { Button } from "@material-ui/core";
+import { blue, blueGrey, grey, red } from "@material-ui/core/colors";
 import { makeStyles } from "@material-ui/core/styles";
-import {
-  lightBlue,
-  blueGrey,
-  red,
-  blue,
-  grey,
-  pink,
-  indigo,
-} from "@material-ui/core/colors";
+import React from "react";
 
 const DashboardActions = () => {
   const buttonStyle = makeStyles({

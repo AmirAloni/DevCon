@@ -1,14 +1,12 @@
-import React from "react";
-import { Redirect } from "react-router-dom";
-import { connect } from "react-redux";
-import PropTypes from "prop-types";
-
 import { Link } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
 import { lightBlue } from "@material-ui/core/colors";
+import { makeStyles } from "@material-ui/core/styles";
+import PropTypes from "prop-types";
+import React from "react";
+import { connect } from "react-redux";
+import { Redirect } from "react-router-dom";
 
 const Landing = ({ isAuthenticated }) => {
-  
   const landingStyle = makeStyles({
     pWhite: {
       color: lightBlue[50],
@@ -25,7 +23,7 @@ const Landing = ({ isAuthenticated }) => {
       color: lightBlue[500],
       fontSize: 20,
       padding: "30px 30px 30px 30px",
-    }
+    },
   });
 
   const classes = landingStyle();

@@ -1,61 +1,52 @@
-import React, { Fragment, useEffect } from "react";
-import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
-import { connect } from "react-redux";
-import Spinner from "../layout/Spinner";
-import ProfileTop from "./ProfileTop";
-import ProfileAbout from "./ProfileAbout";
-import ProfileExperience from "./ProfileExperience";
-import ProfileEducation from "./ProfileEducation";
-import ProfileGithub from "./ProfileGithub";
-import { getProfileById } from "../../actions/profile";
 import { Button } from "@material-ui/core";
+import { blue, blueGrey, grey, red } from "@material-ui/core/colors";
 import { makeStyles } from "@material-ui/core/styles";
-import {
-  lightBlue,
-  blueGrey,
-  red,
-  blue,
-  grey,
-  pink,
-  indigo,
-} from "@material-ui/core/colors";
+import PropTypes from "prop-types";
+import React, { Fragment, useEffect } from "react";
+import { connect } from "react-redux";
+import { getProfileById } from "../../actions/profile";
+import Spinner from "../layout/Spinner";
+import ProfileAbout from "./ProfileAbout";
+import ProfileEducation from "./ProfileEducation";
+import ProfileExperience from "./ProfileExperience";
+import ProfileGithub from "./ProfileGithub";
+import ProfileTop from "./ProfileTop";
 
 const Profile = ({ getProfileById, profile: { profile }, auth, match }) => {
   const nullProfile = !profile;
   useEffect(() => {
     getProfileById(match.params.id);
   }, [getProfileById, match.params.id, nullProfile]);
-  
+
   const buttonStyle = makeStyles({
     profileItems: {
       backgroundColor: blueGrey[400],
-      color: blueGrey[50]
+      color: blueGrey[50],
     },
     primary: {
       backgroundColor: blueGrey[500],
       color: blueGrey[50],
-      minHeight: '40px',
-      margin: '5px'
+      minHeight: "40px",
+      margin: "5px",
     },
-    secondary:{
+    secondary: {
       backgroundColor: blue[300],
       color: blue[50],
-      minHeight: '40px',
-      margin: '5px'
+      minHeight: "40px",
+      margin: "5px",
     },
-    cancel:{
+    cancel: {
       backgroundColor: grey[500],
       color: grey[50],
-      minHeight: '40px',
-      margin: '5px'
+      minHeight: "40px",
+      margin: "5px",
     },
-    delete:{
+    delete: {
       backgroundColor: red[400],
       color: red[50],
-      minHeight: '40px',
-      margin: '5px'
-    }
+      minHeight: "40px",
+      margin: "5px",
+    },
   });
   const btnStyle = buttonStyle();
 

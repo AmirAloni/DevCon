@@ -1,22 +1,14 @@
-import React, { Fragment, useEffect } from "react";
-import { Link } from "react-router-dom";
-import PropTypes from "prop-types";
-import { connect } from "react-redux";
-import DashboardActions from "./DashboardActions";
-import Experience from "./Experience";
-import Education from "./Education";
-import { getCurrentProfile, deleteAccount } from "../../actions/profile";
-import { Container, CssBaseline, Button } from "@material-ui/core";
+import { Button, Container, CssBaseline } from "@material-ui/core";
+import { blue, blueGrey, grey, red } from "@material-ui/core/colors";
 import { makeStyles } from "@material-ui/core/styles";
-import {
-  lightBlue,
-  blueGrey,
-  red,
-  blue,
-  grey,
-  pink,
-  indigo,
-} from "@material-ui/core/colors";
+import PropTypes from "prop-types";
+import React, { Fragment, useEffect } from "react";
+import { connect } from "react-redux";
+import { Link } from "react-router-dom";
+import { deleteAccount, getCurrentProfile } from "../../actions/profile";
+import DashboardActions from "./DashboardActions";
+import Education from "./Education";
+import Experience from "./Experience";
 
 const Dashboard = ({
   getCurrentProfile,
@@ -65,7 +57,9 @@ const Dashboard = ({
       <CssBaseline />
       <Container maxWidth="sm">
         <h1 className="large text-primary">
-          {user && user.name && user.name.charAt(0).toUpperCase() + user.name.slice(1)}
+          {user &&
+            user.name &&
+            user.name.charAt(0).toUpperCase() + user.name.slice(1)}
           's Dashboard
         </h1>
         {profile !== null ? (

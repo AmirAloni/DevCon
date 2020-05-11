@@ -1,18 +1,10 @@
-import React, { useState } from "react";
+import { Button } from "@material-ui/core";
+import { blue, blueGrey, grey, lightBlue, red } from "@material-ui/core/colors";
+import { makeStyles } from "@material-ui/core/styles";
 import PropTypes from "prop-types";
+import React, { useState } from "react";
 import { connect } from "react-redux";
 import { addComment } from "../../actions/post";
-import { Button } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
-import {
-  lightBlue,
-  blueGrey,
-  red,
-  blue,
-  grey,
-  pink,
-  indigo,
-} from "@material-ui/core/colors";
 
 const CommentForm = ({ postId, addComment }) => {
   const [text, setText] = useState("");
@@ -51,22 +43,22 @@ const CommentForm = ({ postId, addComment }) => {
     main: {
       color: lightBlue[500],
       fontSize: 20,
-      padding: "30px 30px 30px 30px"
+      padding: "30px 30px 30px 30px",
     },
     smallWhite: {
       color: lightBlue[50],
       fontSize: 18,
       padding: "0px 10px 0px 10px",
-      flexGrow: 1
+      flexGrow: 1,
     },
     bigWhite: {
       color: lightBlue[50],
       fontSize: 32,
       padding: "0px 10px 0px 10px",
-      flexGrow: 1
-    }
+      flexGrow: 1,
+    },
   });
-  
+
   const lnkStyle = linkStyle();
   const btnStyle = buttonStyle();
 

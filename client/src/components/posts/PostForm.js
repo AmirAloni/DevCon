@@ -1,18 +1,10 @@
-import React, { useState } from 'react';
+import Button from '@material-ui/core/Button';
+import { blue, blueGrey, grey, red } from "@material-ui/core/colors";
+import { makeStyles } from "@material-ui/core/styles";
 import PropTypes from 'prop-types';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { addPost } from '../../actions/post';
-import Button from '@material-ui/core/Button';
-import { makeStyles } from "@material-ui/core/styles";
-import {
-  lightBlue,
-  blueGrey,
-  red,
-  blue,
-  grey,
-  pink,
-  indigo,
-} from "@material-ui/core/colors";
 
 const PostForm = ({ addPost }) => {
   const [text, setText] = useState('');
