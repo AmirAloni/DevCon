@@ -1,7 +1,10 @@
 # DevCon  
 
 Node.js Web Application during Development with React, Redux, and MongoDB.  
-DevCon is a social network for developers.
+DevCon is a social network for developers.  
+
+Link to project main page- https://dev-con-net.herokuapp.com/    
+Link to my profile in the project - https://dev-con-net.herokuapp.com/profile/5e9d79ffdff32c08a4d73064    
 
 architecture:
 
