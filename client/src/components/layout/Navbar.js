@@ -11,7 +11,7 @@ import {
   blue,
   grey,
   pink,
-  indigo,
+  indigo
 } from "@material-ui/core/colors";
 
 const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
