@@ -87,10 +87,10 @@ const Dashboard = ({
           </Fragment>
         ) : (
           <Fragment>
-            <p>You have not yet setup a profile, please add some info</p>
-            <Link to="/create-profile" className="btn btn-primary my-1">
+            <p>You have not setup a profile yet, please add some info</p>
+            <Button href="/create-profile" className={btnStyle.primary}>
               Create Profile
-            </Link>
+            </Button>
           </Fragment>
         )}{" "}
       </Container>
