@@ -7,7 +7,8 @@ import Experience from './Experience';
 import Education from './Education';
 import { getCurrentProfile, deleteAccount } from '../../actions/profile';
 import { Container, CssBaseline, Button } from '@material-ui/core';
-import {buttonStyle} from '../Styles'
+import { makeStyles } from '@material-ui/core/styles';
+import {lightBlue, blueGrey, red, blue, grey, pink, indigo} from '@material-ui/core/colors';
 
 
 const Dashboard = ({
@@ -20,8 +21,37 @@ const Dashboard = ({
     getCurrentProfile();
   }, [getCurrentProfile]);
 
+  const buttonStyle = makeStyles({
+    profileItems: {
+      backgroundColor: blueGrey[400],
+      color: blueGrey[50]
+    },
+    primary: {
+      backgroundColor: blueGrey[500],
+      color: blueGrey[50],
+      minHeight: '40px',
+      margin: '5px'
+    },
+    secondary:{
+      backgroundColor: blue[300],
+      color: blue[50],
+      minHeight: '40px',
+      margin: '5px'
+    },
+    cancel:{
+      backgroundColor: grey[500],
+      color: grey[50],
+      minHeight: '40px',
+      margin: '5px'
+    },
+    delete:{
+      backgroundColor: red[400],
+      color: red[50],
+      minHeight: '40px',
+      margin: '5px'
+    }
+  });
   const btnStyle = buttonStyle();
-
 
   return (
     <Fragment>
