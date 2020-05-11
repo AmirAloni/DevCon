@@ -27,9 +27,6 @@ import {lightBlue, blueGrey, red, blue, grey, pink, indigo} from '@material-ui/c
    const onSubmit = async e => {
      e.preventDefault();
      login(email, password);
-     if (isAuthenticated) {
-      return <Redirect to="/dashboard" />;
-    }
    };
 
    const loginStyle = makeStyles((theme) => ({
