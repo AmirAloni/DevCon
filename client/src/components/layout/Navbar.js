@@ -3,6 +3,16 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { logout } from '../../actions/auth';
 import { Link } from '@material-ui/core';
+import { makeStyles } from "@material-ui/core/styles";
+import {
+  lightBlue,
+  blueGrey,
+  red,
+  blue,
+  grey,
+  pink,
+  indigo,
+} from "@material-ui/core/colors";
 
 const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
   

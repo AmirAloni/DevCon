@@ -1,55 +1,62 @@
-import React, { Fragment } from 'react';
-import PropTypes from 'prop-types';
-import Moment from 'react-moment';
-import moment from 'moment';
-import { connect } from 'react-redux';
-import { deleteExperience } from '../../actions/profile';
-import { Button } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
-import {lightBlue, blueGrey, red, blue, grey, pink, indigo} from '@material-ui/core/colors';
+import React, { Fragment } from "react";
+import PropTypes from "prop-types";
+import Moment from "react-moment";
+import moment from "moment";
+import { connect } from "react-redux";
+import { deleteExperience } from "../../actions/profile";
+import { Button } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
+import {
+  lightBlue,
+  blueGrey,
+  red,
+  blue,
+  grey,
+  pink,
+  indigo,
+} from "@material-ui/core/colors";
 
 const Experience = ({ experience, deleteExperience }) => {
-
   const buttonStyle = makeStyles({
     profileItems: {
       backgroundColor: blueGrey[400],
-      color: blueGrey[50]
+      color: blueGrey[50],
     },
     primary: {
       backgroundColor: blueGrey[500],
       color: blueGrey[50],
-      minHeight: '40px',
-      margin: '5px'
+      minHeight: "40px",
+      margin: "5px",
     },
-    secondary:{
+    secondary: {
       backgroundColor: blue[300],
       color: blue[50],
-      minHeight: '40px',
-      margin: '5px'
+      minHeight: "40px",
+      margin: "5px",
     },
-    cancel:{
+    cancel: {
       backgroundColor: grey[500],
       color: grey[50],
-      minHeight: '40px',
-      margin: '5px'
+      minHeight: "40px",
+      margin: "5px",
     },
-    delete:{
+    delete: {
       backgroundColor: red[400],
       color: red[50],
-      minHeight: '40px',
-      margin: '5px'
-    }
+      minHeight: "40px",
+      margin: "5px",
+    },
   });
   const btnStyle = buttonStyle();
 
-  const experiences = experience.map(exp => (
+  const experiences = experience.map((exp) => (
     <tr key={exp._id}>
       <td>{exp.company}</td>
       <td className="hide-sm">{exp.title}</td>
       <td>
-        <Moment format="YYYY/MM/DD">{moment.utc(exp.from)}</Moment> -{' '}
+        <Moment format="YYYY/MM/DD">{moment.utc(exp.from)}</Moment> -{" "}
         {exp.to === null ? (
-          ' Now'
+          " Now"
         ) : (
           <Moment format="YYYY/MM/DD">{moment.utc(exp.to)}</Moment>
         )}
@@ -85,11 +92,8 @@ const Experience = ({ experience, deleteExperience }) => {
 
 Experience.propTypes = {
   experience: PropTypes.array.isRequired,
-  deleteExperience: PropTypes.func.isRequired
+  deleteExperience: PropTypes.func.isRequired,
 };
 
-export default connect(
-  null,
-  { deleteExperience }
-)(Experience);
+export default connect(null, { deleteExperience })(Experience);
 //
