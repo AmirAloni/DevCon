@@ -10,7 +10,8 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import { login } from '../../actions/auth';
-import {loginStyle} from '../Styles'
+import { makeStyles } from '@material-ui/core/styles';
+import {lightBlue, blueGrey, red, blue, grey, pink, indigo} from '@material-ui/core/colors';
 
  const Login = ({ login, isAuthenticated }) => {
    
@@ -28,6 +29,32 @@ import {loginStyle} from '../Styles'
      login(email, password);
    };
 
+   const loginStyle = makeStyles((theme) => ({
+    paper: {
+      marginTop: theme.spacing(8),
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+    },
+    form: {
+      width: '100%',
+      marginTop: theme.spacing(1)
+    },
+    submit: {
+      margin: theme.spacing(3, 0, 2),
+      backgroundColor: blue[300],
+      color: blue[50],
+      fontSize: 18
+    },
+    title:{
+      color: blueGrey[500],
+      fontSize: 45
+    },
+    link:{
+      color: blue[300],
+      fontSize: 14
+    }
+  }));
   const classes = loginStyle();
 
   if (isAuthenticated) {
