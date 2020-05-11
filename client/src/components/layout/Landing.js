@@ -5,65 +5,32 @@ import PropTypes from "prop-types";
 
 import { Link } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
-import {
-  lightBlue,
-  blueGrey,
-  red,
-  blue,
-  grey,
-  pink,
-  indigo,
-} from "@material-ui/core/colors";
+import { lightBlue } from "@material-ui/core/colors";
 
 const Landing = ({ isAuthenticated }) => {
   
-  const pWhite = makeStyles({
-    root: {
+  const landingStyle = makeStyles({
+    pWhite: {
       color: lightBlue[50],
-      fontSize: 24
+      fontSize: 24,
+    },
+    marginDiv: {
+      margin: "30px 30px 30px 30px",
+    },
+    h1White: {
+      color: lightBlue[50],
+      fontSize: 50,
+    },
+    linkStyle: {
+      color: lightBlue[500],
+      fontSize: 20,
+      padding: "30px 30px 30px 30px",
     }
   });
-  
-   const h1White = makeStyles({
-      root: {
-        color: lightBlue[50],
-        fontSize: 50
-      }
-    });
-  
-   const linkStyle = makeStyles({
-      main: {
-        color: lightBlue[500],
-        fontSize: 20,
-        padding: "30px 30px 30px 30px"
-      },
-      smallWhite: {
-        color: lightBlue[50],
-        fontSize: 18,
-        padding: "0px 10px 0px 10px",
-        flexGrow: 1
-      },
-      bigWhite: {
-        color: lightBlue[50],
-        fontSize: 32,
-        padding: "0px 10px 0px 10px",
-        flexGrow: 1
-      }
-    });
-  
-  
-     const marginDiv = makeStyles({
-      root: {
-        margin: '30px 30px 30px 30px'
-      }
-    });
-    
-    const pW = pWhite();
-    const h1W = h1White();
-    const lnkStyle = linkStyle();
-    const mrgnDiv = marginDiv();
 
-    if (isAuthenticated) {
+  const classes = landingStyle();
+
+  if (isAuthenticated) {
     return <Redirect to="/dashboard" />;
   }
 
@@ -71,20 +38,20 @@ const Landing = ({ isAuthenticated }) => {
     <section className="landing">
       <div className="dark-overlay">
         <div className="landing-inner">
-          <h1 className={h1W.root}>Network for Developers</h1>
-          <p className={pW.root}>
+          <h1 className={classes.h1White}>Network for Developers</h1>
+          <p className={classes.pWhite}>
             Create your developer profile, share posts, issues, and solutions
             with other developers.
           </p>
-          <div className={mrgnDiv.root}>
+          <div className={classes.mrgnDiv}>
             <Link
               href="/register"
-              className={linkStyle().main}
+              className={classes.linkStyle}
               underline="none"
             >
               Sign Up
             </Link>
-            <Link href="/login" className={lnkStyle.main} underline="none">
+            <Link href="/login" className={classes.linkStyle} underline="none">
               Login
             </Link>
           </div>
