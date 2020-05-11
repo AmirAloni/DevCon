@@ -27,6 +27,9 @@ import {lightBlue, blueGrey, red, blue, grey, pink, indigo} from '@material-ui/c
    const onSubmit = async e => {
      e.preventDefault();
      login(email, password);
+     if (isAuthenticated) {
+      return <Redirect to="/dashboard" />;
+    }
    };
 
    const loginStyle = makeStyles((theme) => ({
@@ -95,14 +98,14 @@ import {lightBlue, blueGrey, red, blue, grey, pink, indigo} from '@material-ui/c
             value={password}
             onChange={e => onChange(e)}
           />
-          <Link
+          <Button
             type="submit"
             fullWidth
             variant="contained"
             className={classes.submit}
           >
             Sign In
-          </Link>
+          </Button>
           <Grid container>
             <Grid item>
               <Link href='/register' className={classes.link}>
