@@ -52,34 +52,26 @@ const ProfileForm = ({
 
   const [displaySocialInputs, toggleSocialInputs] = useState(false);
 
-  const textFieldStyle = makeStyles({
-    regular: {
-      fontSize: 18,
-    },
-  });
-
   const buttonStyle = makeStyles({
-    profileItems: {
-      backgroundColor: blueGrey[400],
-      color: blueGrey[50],
-    },
     primary: {
       backgroundColor: blueGrey[500],
       color: blueGrey[50],
+      margin: "1rem",
     },
     secondary: {
       backgroundColor: blue[300],
       color: blue[50],
-      margin: '1rem'
+      margin: "1rem",
     },
     cancel: {
       backgroundColor: grey[500],
       color: grey[50],
-      margin: '1rem'
+      margin: "1rem",
     },
     delete: {
       backgroundColor: red[400],
       color: red[50],
+      margin: "1rem",
     },
   });
 
@@ -110,7 +102,7 @@ const ProfileForm = ({
     },
   }));
 
-  const selectStyle = makeStyles({
+  const fontStyle = makeStyles({
     primary: {
       fontSize: 18,
     },
@@ -136,10 +128,9 @@ const ProfileForm = ({
       color: red[500],
     },
   });
-  const txfStyle = textFieldStyle();
+  const fntStyle = fontStyle();
   const btnStyle = buttonStyle();
   const classes = loginStyle();
-  const slctStyle = selectStyle();
   const icnStyle = iconStyle();
 
   useEffect(() => {
@@ -188,68 +179,58 @@ const ProfileForm = ({
         <h1 className="large text-primary">Edit Your Profile</h1>
         <div className="m-1"></div>
         <form onSubmit={onSubmit}>
-          <div className="m-1">
-            <Select
-              margin="normal"
-              fullWidth
-              name="status"
-              value={status}
-              onChange={onChange}
-              className={slctStyle.primary}
-              variant="outlined"
-              required
-              defaultValue="Developer"
-            >
-              <MenuItem value="Developer">Developer</MenuItem>
-              <MenuItem value="Junior Developer">Junior Developer</MenuItem>
-              <MenuItem value="Senior Developer">Senior Developer</MenuItem>
-              <MenuItem value="Manager">Manager</MenuItem>
-              <MenuItem value="Student or Learning">
-                Student or Learning
-              </MenuItem>
-              <MenuItem value="Instructor">Instructor or Teacher</MenuItem>
-              <MenuItem value="Intern">Intern</MenuItem>
-              <MenuItem value="Other">Other</MenuItem>
-            </Select>
-          </div>
-          <div className="m-1">
-            <TextField
-              margin="normal"
-              fullWidth
-              label="Company"
-              value={company}
-              onChange={onChange}
-              name="company"
-              variant="outlined"
-              className={txfStyle.regular}
-            />
-          </div>
-          <div className="m-1">
-            <LanguageIcon className={icnStyle.web}></LanguageIcon>
-            <TextField
-              margin="normal"
-              fullWidth
-              label="Website"
-              value={website}
-              onChange={onChange}
-              name="website"
-              variant="outlined"
-              className={txfStyle.regular}
-            />
-          </div>
-          <div className="m-1">
-            <TextField
-              margin="normal"
-              fullWidth
-              label="Location"
-              value={location}
-              onChange={onChange}
-              name="location"
-              variant="outlined"
-              className={txfStyle.regular}
-            />
-          </div>
-          <div className="m-1">
+          <Select
+            margin="normal"
+            fullWidth
+            name="status"
+            value={status}
+            onChange={onChange}
+            className={fntStyle.primary}
+            variant="outlined"
+            required
+            defaultValue="Developer"
+          >
+            <MenuItem value="Developer">Developer</MenuItem>
+            <MenuItem value="Junior Developer">Junior Developer</MenuItem>
+            <MenuItem value="Senior Developer">Senior Developer</MenuItem>
+            <MenuItem value="Manager">Manager</MenuItem>
+            <MenuItem value="Student or Learning">Student or Learning</MenuItem>
+            <MenuItem value="Instructor">Instructor or Teacher</MenuItem>
+            <MenuItem value="Intern">Intern</MenuItem>
+            <MenuItem value="Other">Other</MenuItem>
+          </Select>
+          <TextField
+            margin="normal"
+            fullWidth
+            label="Company"
+            value={company}
+            onChange={onChange}
+            name="company"
+            variant="outlined"
+            className={fntStyle.primary}
+          />
+          <LanguageIcon className={icnStyle.web}></LanguageIcon>
+          <TextField
+            margin="normal"
+            fullWidth
+            label="Website"
+            value={website}
+            onChange={onChange}
+            name="website"
+            variant="outlined"
+            className={fntStyle.primary}
+          />
+          <TextField
+            margin="normal"
+            fullWidth
+            label="Location"
+            value={location}
+            onChange={onChange}
+            name="location"
+            variant="outlined"
+            className={fntStyle.primary}
+          />
+          <div>
             <TextField
               margin="normal"
               fullWidth
@@ -258,130 +239,108 @@ const ProfileForm = ({
               onChange={onChange}
               name="skills"
               variant="outlined"
-              className={txfStyle.regular}
+              className={fntStyle.primary}
               required
             />
             <small className="form-text">
               Please use comma separated values (eg. HTML,CSS,JavaScript,PHP)
             </small>
           </div>
-          <div className="m-1">
-            <div>
-              <TextField
-                margin="normal"
-                fullWidth
-                label="Github Username"
-                value={githubusername}
-                onChange={onChange}
-                name="githubusername"
-                variant="outlined"
-                className={txfStyle.regular}
-              />
-            </div>
+          <div>
+            <TextField
+              margin="normal"
+              fullWidth
+              label="Github Username"
+              value={githubusername}
+              onChange={onChange}
+              name="githubusername"
+              variant="outlined"
+              className={fntStyle.primary}
+            />
             <small className="form-text">
               If you want your latest repos and a Github link, include your
               username
             </small>
           </div>
-          <div>
-            <TextField
-              margin="normal"
-              fullWidth
-              label="A short bio of yourself"
-              multiline
-              rows={8}
-              variant="outlined"
-              name="bio"
-              value={bio}
-              onChange={onChange}
-            />
-          </div>
-
-          <div className="my-2">
-            <Button
-              onClick={() => toggleSocialInputs(!displaySocialInputs)}
-              margin="normal"
-              className={btnStyle.primary}
-            >
-              Add Social Network Links
-            </Button>
-          </div>
+          <TextField
+            margin="normal"
+            fullWidth
+            label="A short bio of yourself"
+            multiline
+            rows={8}
+            variant="outlined"
+            name="bio"
+            value={bio}
+            onChange={onChange}
+          />
+          <Button
+            onClick={() => toggleSocialInputs(!displaySocialInputs)}
+            margin="normal"
+            className={btnStyle.primary}
+          >
+            Add Social Network Links
+          </Button>
 
           {displaySocialInputs && (
             <Fragment>
-              <div className="m-1 social-input">
-                <TwitterIcon className={icnStyle.twitter}></TwitterIcon>
-                <TextField
-                  margin="normal"
-                  fullWidth
-                  label="Twitter URL"
-                  fullWidth
-                  variant="outlined"
-                  name="twitter"
-                  value={twitter}
-                  onChange={onChange}
-                />
-              </div>
+              <TwitterIcon className={icnStyle.twitter}></TwitterIcon>
+              <TextField
+                margin="normal"
+                fullWidth
+                label="Twitter URL"
+                variant="outlined"
+                name="twitter"
+                value={twitter}
+                onChange={onChange}
+              />
 
-              <div className="m-1 social-input">
-                <FacebookIcon className={icnStyle.facebook}></FacebookIcon>
-                <TextField
-                  margin="normal"
-                  fullWidth
-                  type="link"
-                  label="Facebook URL"
-                  fullWidth
-                  variant="outlined"
-                  name="facebook"
-                  value={facebook}
-                  onChange={onChange}
-                />
-              </div>
+              <FacebookIcon className={icnStyle.facebook}></FacebookIcon>
+              <TextField
+                margin="normal"
+                fullWidth
+                type="link"
+                label="Facebook URL"
+                variant="outlined"
+                name="facebook"
+                value={facebook}
+                onChange={onChange}
+              />
 
-              <div className="m-1 social-input">
-                <YouTubeIcon className={icnStyle.youtube}></YouTubeIcon>
-                <TextField
-                  margin="normal"
-                  fullWidth
-                  label="YouTube URL"
-                  fullWidth
-                  variant="outlined"
-                  name="youtube"
-                  value={youtube}
-                  onChange={onChange}
-                />
-              </div>
+              <YouTubeIcon className={icnStyle.youtube}></YouTubeIcon>
+              <TextField
+                margin="normal"
+                fullWidth
+                label="YouTube URL"
+                variant="outlined"
+                name="youtube"
+                value={youtube}
+                onChange={onChange}
+              />
 
-              <div className="m-1 social-input">
-                <LinkedInIcon className={icnStyle.linkedin}></LinkedInIcon>
-                <TextField
-                  margin="normal"
-                  fullWidth
-                  label="Linkedin URL"
-                  fullWidth
-                  variant="outlined"
-                  name="linkedin"
-                  value={linkedin}
-                  onChange={onChange}
-                />
-              </div>
+              <LinkedInIcon className={icnStyle.linkedin}></LinkedInIcon>
+              <TextField
+                margin="normal"
+                fullWidth
+                label="Linkedin URL"
+                variant="outlined"
+                name="linkedin"
+                value={linkedin}
+                onChange={onChange}
+              />
 
-              <div className="m-1 social-input">
-                <InstagramIcon className={icnStyle.instagram}></InstagramIcon>
-                <TextField
-                  margin="normal"
-                  fullWidth
-                  label="Instagram URL"
-                  fullWidth
-                  variant="outlined"
-                  name="instagram"
-                  value={instagram}
-                  onChange={onChange}
-                />
-              </div>
+              <InstagramIcon className={icnStyle.instagram}></InstagramIcon>
+              <TextField
+                margin="normal"
+                fullWidth
+                label="Instagram URL"
+                variant="outlined"
+                name="instagram"
+                value={instagram}
+                onChange={onChange}
+              />
             </Fragment>
           )}
-          <div className='text-center'>
+          <div className="text-center">
             <Button
               type="submit"
               variant="contained"
@@ -389,10 +348,7 @@ const ProfileForm = ({
             >
               Submit
             </Button>
-            <Button
-              className={btnStyle.cancel}
-              href="/dashboard"
-            >
+            <Button className={btnStyle.cancel} href="/dashboard">
               Go Back
             </Button>
           </div>

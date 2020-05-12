@@ -25,49 +25,32 @@ const AddExperience = ({ addExperience, history }) => {
     description: "",
   });
 
-  const textFieldStyle = makeStyles({
-    small: {
+  const fontStyle = makeStyles({
+    primary: {
       fontSize: 18,
-      minWidth: "200px",
-    },
-    medium: {
-      fontSize: 18,
-      minWidth: "400px",
-    },
-    big: {
-      fontSize: 18,
-      minWidth: "800px",
     },
   });
 
   const buttonStyle = makeStyles({
-    profileItems: {
-      backgroundColor: blueGrey[400],
-      color: blueGrey[50],
-    },
     primary: {
       backgroundColor: blueGrey[500],
       color: blueGrey[50],
-      minHeight: "40px",
-      margin: "5px",
+      margin: "1rem",
     },
     secondary: {
       backgroundColor: blue[300],
       color: blue[50],
-      minHeight: "40px",
-      margin: "5px",
+      margin: "1rem",
     },
     cancel: {
       backgroundColor: grey[500],
       color: grey[50],
-      minHeight: "40px",
-      margin: "5px",
+      margin: "1rem",
     },
     delete: {
       backgroundColor: red[400],
       color: red[50],
-      minHeight: "40px",
-      margin: "5px",
+      margin: "1rem",
     },
   });
 
@@ -98,7 +81,7 @@ const AddExperience = ({ addExperience, history }) => {
     },
   }));
 
-  const txfStyle = textFieldStyle();
+  const fntStyle = fontStyle();
   const btnStyle = buttonStyle();
   const classes = loginStyle();
 
@@ -115,108 +98,107 @@ const AddExperience = ({ addExperience, history }) => {
   };
 
   return (
-    <Container component="main" maxWidth="xs">
+    <Container component="main" maxWidth="md">
       <CssBaseline />
       <div className={classes.paper}>
         <h1 className="large text-primary">Add Experience</h1>
         <div className="m-1"></div>
         <form onSubmit={onSubmit}>
-          <div className="m-1">
-            <TextField
-              label="Job Title"
-              value={title}
-              onChange={onChange}
-              name="title"
-              variant="outlined"
-              className={txfStyle.medium}
-              required
-            />
-          </div>
-          <div className="m-1">
-            <TextField
-              label="Company"
-              value={company}
-              onChange={onChange}
-              name="company"
-              variant="outlined"
-              className={txfStyle.medium}
-              required
-            />
-          </div>
-          <div className="m-1">
-            <TextField
-              label="Location"
-              value={location}
-              onChange={onChange}
-              name="location"
-              variant="outlined"
-              className={txfStyle.medium}
-            />
-          </div>
-          <div className="m-1">
-            <h4>From Date</h4>
-            <TextField
-              type="date"
-              value={from}
-              onChange={onChange}
-              name="from"
-              variant="outlined"
-              className={txfStyle.small}
-            />
-          </div>
-          <div className="m-1">
-            <FormControlLabel
-              control={
-                <Checkbox
-                  checked={current}
-                  onChange={() => {
-                    setFormData({ ...formData, current: !current });
-                    toggleDisabled(!toDateDisabled);
-                  }}
-                  name="current"
-                  value={current}
-                  color="primary"
-                />
-              }
-              label="Current Job"
-            />
-          </div>
-          <div className="m-1">
-            <h4>To Date</h4>
-            <TextField
-              type="date"
-              value={to}
-              value={to}
-              onChange={(e) => onChange(e)}
-              disabled={toDateDisabled ? "disabled" : ""}
-              name="to"
-              variant="outlined"
-              className={txfStyle.small}
-            />
-          </div>
-          <div>
-            <TextField
-              label="Job Description"
-              multiline
-              rows={8}
-              fullWidth
-              variant="outlined"
-              name="description"
-              value={description}
-              onChange={onChange}
-            />
-          </div>
+          <TextField
+            margin="normal"
+            fullWidth
+            label="Job Title"
+            value={title}
+            onChange={onChange}
+            name="title"
+            variant="outlined"
+            className={fntStyle.primary}
+            required
+          />
+          <TextField
+            margin="normal"
+            fullWidth
+            label="Company"
+            value={company}
+            onChange={onChange}
+            name="company"
+            variant="outlined"
+            className={fntStyle.primary}
+            required
+          />
+          <TextField
+            margin="normal"
+            fullWidth
+            label="Location"
+            value={location}
+            onChange={onChange}
+            name="location"
+            variant="outlined"
+            className={fntStyle.primary}
+          />
+          <h4>From Date</h4>
+          <TextField
+            margin="normal"
+            fullWidth
+            type="date"
+            value={from}
+            onChange={onChange}
+            name="from"
+            variant="outlined"
+            className={fntStyle.primary}
+          />
+          <FormControlLabel
+            control={
+              <Checkbox
+                checked={current}
+                onChange={() => {
+                  setFormData({ ...formData, current: !current });
+                  toggleDisabled(!toDateDisabled);
+                }}
+                name="current"
+                value={current}
+                color="primary"
+              />
+            }
+            label="Current Job"
+          />
+          <h4>To Date</h4>
+          <TextField
+            margin="normal"
+            fullWidth
+            type="date"
+            value={to}
+            onChange={(e) => onChange(e)}
+            disabled={toDateDisabled ? "disabled" : ""}
+            name="to"
+            variant="outlined"
+            className={fntStyle.primary}
+          />
+          <TextField
+            margin="normal"
+            fullWidth
+            label="Job Description"
+            multiline
+            rows={8}
+            variant="outlined"
+            name="description"
+            className={fntStyle.primary}
+            value={description}
+            onChange={onChange}
+          />
 
-          <Button
-            type="submit"
-            variant="contained"
-            className={btnStyle.secondary}
-          >
-            Submit
-          </Button>
-          <Button className={btnStyle.cancel} href="/dashboard">
-            Go Back
-          </Button>
+          <div className="text-center">
+            <Button
+              type="submit"
+              variant="contained"
+              className={btnStyle.secondary}
+            >
+              Submit
+            </Button>
+            <Button className={btnStyle.cancel} href="/dashboard">
+              Go Back
+            </Button>
+          </div>
         </form>
       </div>
     </Container>

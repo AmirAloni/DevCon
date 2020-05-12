@@ -5,15 +5,14 @@ import PropTypes from "prop-types";
 import React from "react";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
+import Container from "@material-ui/core/Container";
+import CssBaseline from "@material-ui/core/CssBaseline";
 
 const Landing = ({ isAuthenticated }) => {
   const landingStyle = makeStyles({
     pWhite: {
       color: lightBlue[50],
       fontSize: 24,
-    },
-    marginDiv: {
-      margin: "30px 30px 30px 30px",
     },
     h1White: {
       color: lightBlue[50],
@@ -22,8 +21,8 @@ const Landing = ({ isAuthenticated }) => {
     linkStyle: {
       color: lightBlue[500],
       fontSize: 20,
-      padding: "30px 30px 30px 30px",
-    },
+      margin: '1rem'
+    }
   });
 
   const classes = landingStyle();
@@ -34,6 +33,8 @@ const Landing = ({ isAuthenticated }) => {
 
   return (
     <section className="landing">
+    <Container component="main" maxWidth="lg">
+      <CssBaseline />{" "}
       <div className="dark-overlay">
         <div className="landing-inner">
           <h1 className={classes.h1White}>Network for Developers</h1>
@@ -41,7 +42,7 @@ const Landing = ({ isAuthenticated }) => {
             Create your developer profile, share posts, issues, and solutions
             with other developers.
           </p>
-          <div className={classes.mrgnDiv}>
+          <div className="text-center m-2">
             <Link
               href="/register"
               className={classes.linkStyle}
@@ -49,12 +50,17 @@ const Landing = ({ isAuthenticated }) => {
             >
               Sign Up
             </Link>
-            <Link href="/login" className={classes.linkStyle} underline="none">
+            <Link
+              href="/login"
+              className={classes.linkStyle}
+              underline="none"
+            >
               Login
             </Link>
           </div>
         </div>
       </div>
+    </Container>
     </section>
   );
 };

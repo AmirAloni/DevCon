@@ -1,4 +1,11 @@
-import { Button, Checkbox, Container, CssBaseline, FormControlLabel, TextField } from "@material-ui/core";
+import {
+  Button,
+  Checkbox,
+  Container,
+  CssBaseline,
+  FormControlLabel,
+  TextField,
+} from "@material-ui/core";
 import { blue, blueGrey, grey, red } from "@material-ui/core/colors";
 import { makeStyles } from "@material-ui/core/styles";
 import PropTypes from "prop-types";
@@ -30,49 +37,32 @@ const AddEducation = ({ addEducation, history }) => {
     current,
   } = formData;
 
-  const textFieldStyle = makeStyles({
-    small: {
+  const fontStyle = makeStyles({
+    primary: {
       fontSize: 18,
-      minWidth: "200px",
-    },
-    medium: {
-      fontSize: 18,
-      minWidth: "400px",
-    },
-    big: {
-      fontSize: 18,
-      minWidth: "800px",
     },
   });
 
   const buttonStyle = makeStyles({
-    profileItems: {
-      backgroundColor: blueGrey[400],
-      color: blueGrey[50],
-    },
     primary: {
       backgroundColor: blueGrey[500],
       color: blueGrey[50],
-      minHeight: "40px",
-      margin: "5px",
+      margin: "1rem",
     },
     secondary: {
       backgroundColor: blue[300],
       color: blue[50],
-      minHeight: "40px",
-      margin: "5px",
+      margin: "1rem",
     },
     cancel: {
       backgroundColor: grey[500],
       color: grey[50],
-      minHeight: "40px",
-      margin: "5px",
+      margin: "1rem",
     },
     delete: {
       backgroundColor: red[400],
       color: red[50],
-      minHeight: "40px",
-      margin: "5px",
+      margin: "1rem",
     },
   });
 
@@ -103,7 +93,7 @@ const AddEducation = ({ addEducation, history }) => {
     },
   }));
 
-  const txfStyle = textFieldStyle();
+  const fntStyle = fontStyle();
   const btnStyle = buttonStyle();
   const classes = loginStyle();
 
@@ -116,110 +106,108 @@ const AddEducation = ({ addEducation, history }) => {
   };
 
   return (
-    <Container component="main" maxWidth="xs">
+    <Container component="main" maxWidth="md">
       <CssBaseline />
       <div className={classes.paper}>
         <h1 className="large text-primary">Add Education</h1>
         <div className="m-1"></div>
         <form onSubmit={onSubmit}>
-          <div className="m-1">
-            <TextField
-              type="text"
-              label="School or Bootcamp"
-              value={school}
-              onChange={onChange}
-              name="school"
-              variant="outlined"
-              className={txfStyle.medium}
-              required
-            />
-          </div>
-          <div className="m-1">
-            <TextField
-              label="Degree or Certificate"
-              value={degree}
-              onChange={onChange}
-              name="degree"
-              variant="outlined"
-              className={txfStyle.medium}
-              required
-            />
-          </div>
-          <div className="m-1">
-            <TextField
-              label="Field of Study"
-              value={fieldofstudy}
-              onChange={onChange}
-              name="fieldofstudy"
-              variant="outlined"
-              className={txfStyle.medium}
-              required
-            />
-          </div>
-          <div className="m-1">
-            <h4>From Date</h4>
-            <TextField
-              type="date"
-              value={from}
-              onChange={onChange}
-              name="from"
-              variant="outlined"
-              className={txfStyle.small}
-            />
-          </div>
-          <div className="m-1">
-            <FormControlLabel
-              control={
-                <Checkbox
-                  checked={current}
-                  onChange={() => {
-                    setFormData({ ...formData, current: !current });
-                    toggleDisabled(!toDateDisabled);
-                  }}
-                  name="current"
-                  value={current}
-                  color="primary"
-                />
-              }
-              label="Current School"
-            />
-          </div>
-          <div className="m-1">
-            <h4>To Date</h4>
-            <TextField
-              type="date"
-              value={to}
-              value={to}
-              onChange={(e) => onChange(e)}
-              disabled={toDateDisabled ? "disabled" : ""}
-              name="to"
-              variant="outlined"
-              className={txfStyle.small}
-            />
-          </div>
-          <div>
-            <TextField
-              label="Program Description"
-              multiline
-              rows={8}
-              fullWidth
-              variant="outlined"
-              name="description"
-              value={description}
-              onChange={onChange}
-            />
-          </div>
+          <TextField
+          margin="normal"
+          fullWidth
+            type="text"
+            label="School or Bootcamp"
+            value={school}
+            onChange={onChange}
+            name="school"
+            variant="outlined"
+            className={fntStyle.primary}
+            required
+          />
+          <TextField
+          margin="normal"
+          fullWidth
+            label="Degree or Certificate"
+            value={degree}
+            onChange={onChange}
+            name="degree"
+            variant="outlined"
+            className={fntStyle.primary}
+            required
+          />
+          <TextField
+          margin="normal"
+          fullWidth
+            label="Field of Study"
+            value={fieldofstudy}
+            onChange={onChange}
+            name="fieldofstudy"
+            variant="outlined"
+            className={fntStyle.primary}
+            required
+          />
+          <h4>From Date</h4>
+          <TextField
+          margin="normal"
+          fullWidth
+            type="date"
+            value={from}
+            onChange={onChange}
+            name="from"
+            variant="outlined"
+            className={fntStyle.primary}
+          />
+          <FormControlLabel
+            control={
+              <Checkbox
+                checked={current}
+                onChange={() => {
+                  setFormData({ ...formData, current: !current });
+                  toggleDisabled(!toDateDisabled);
+                }}
+                name="current"
+                value={current}
+                color="primary"
+              />
+            }
+            label="Current School"
+          />
+          <h4>To Date</h4>
+          <TextField
+          margin="normal"
+          fullWidth
+            type="date"
+            value={to}
+            onChange={(e) => onChange(e)}
+            disabled={toDateDisabled ? "disabled" : ""}
+            name="to"
+            variant="outlined"
+            className={fntStyle.primary}
+          />
+          <TextField
+          margin="normal"
+          fullWidth
+            label="Program Description"
+            multiline
+            rows={8}
+            variant="outlined"
+            name="description"
+            value={description}
+            onChange={onChange}
+          />
 
-          <Button
-            type="submit"
-            variant="contained"
-            className={btnStyle.secondary}
-          >
-            Submit
-          </Button>
-          <Button className={btnStyle.cancel} href="/dashboard">
-            Go Back
-          </Button>
+          <div className="text-center">
+            <Button
+              type="submit"
+              variant="contained"
+              className={btnStyle.secondary}
+            >
+              Submit
+            </Button>
+            <Button className={btnStyle.cancel} href="/dashboard">
+              Go Back
+            </Button>
+          </div>
         </form>
       </div>
     </Container>
