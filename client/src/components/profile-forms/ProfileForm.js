@@ -53,17 +53,8 @@ const ProfileForm = ({
   const [displaySocialInputs, toggleSocialInputs] = useState(false);
 
   const textFieldStyle = makeStyles({
-    small: {
+    regular: {
       fontSize: 18,
-      minWidth: "200px",
-    },
-    medium: {
-      fontSize: 18,
-      minWidth: "400px",
-    },
-    big: {
-      fontSize: 18,
-      minWidth: "800px",
     },
   });
 
@@ -75,26 +66,20 @@ const ProfileForm = ({
     primary: {
       backgroundColor: blueGrey[500],
       color: blueGrey[50],
-      minHeight: "40px",
-      margin: "5px",
     },
     secondary: {
       backgroundColor: blue[300],
       color: blue[50],
-      minHeight: "40px",
-      margin: "5px",
+      margin: '1rem'
     },
     cancel: {
       backgroundColor: grey[500],
       color: grey[50],
-      minHeight: "40px",
-      margin: "5px",
+      margin: '1rem'
     },
     delete: {
       backgroundColor: red[400],
       color: red[50],
-      minHeight: "40px",
-      margin: "5px",
     },
   });
 
@@ -128,7 +113,6 @@ const ProfileForm = ({
   const selectStyle = makeStyles({
     primary: {
       fontSize: 18,
-      minWidth: "300px",
     },
   });
 
@@ -198,7 +182,7 @@ const ProfileForm = ({
   };
 
   return (
-    <Container component="main" maxWidth="xs">
+    <Container component="main" maxWidth="md">
       <CssBaseline />
       <div className={classes.paper}>
         <h1 className="large text-primary">Edit Your Profile</h1>
@@ -206,6 +190,8 @@ const ProfileForm = ({
         <form onSubmit={onSubmit}>
           <div className="m-1">
             <Select
+              margin="normal"
+              fullWidth
               name="status"
               value={status}
               onChange={onChange}
@@ -228,43 +214,51 @@ const ProfileForm = ({
           </div>
           <div className="m-1">
             <TextField
+              margin="normal"
+              fullWidth
               label="Company"
               value={company}
               onChange={onChange}
               name="company"
               variant="outlined"
-              className={txfStyle.medium}
+              className={txfStyle.regular}
             />
           </div>
           <div className="m-1">
             <LanguageIcon className={icnStyle.web}></LanguageIcon>
             <TextField
+              margin="normal"
+              fullWidth
               label="Website"
               value={website}
               onChange={onChange}
               name="website"
               variant="outlined"
-              className={txfStyle.big}
+              className={txfStyle.regular}
             />
           </div>
           <div className="m-1">
             <TextField
+              margin="normal"
+              fullWidth
               label="Location"
               value={location}
               onChange={onChange}
               name="location"
               variant="outlined"
-              className={txfStyle.big}
+              className={txfStyle.regular}
             />
           </div>
           <div className="m-1">
             <TextField
+              margin="normal"
+              fullWidth
               label="Skills"
               value={skills}
               onChange={onChange}
               name="skills"
               variant="outlined"
-              className={txfStyle.big}
+              className={txfStyle.regular}
               required
             />
             <small className="form-text">
@@ -274,12 +268,14 @@ const ProfileForm = ({
           <div className="m-1">
             <div>
               <TextField
+                margin="normal"
+                fullWidth
                 label="Github Username"
                 value={githubusername}
                 onChange={onChange}
                 name="githubusername"
                 variant="outlined"
-                className={txfStyle.medium}
+                className={txfStyle.regular}
               />
             </div>
             <small className="form-text">
@@ -289,10 +285,11 @@ const ProfileForm = ({
           </div>
           <div>
             <TextField
+              margin="normal"
+              fullWidth
               label="A short bio of yourself"
               multiline
               rows={8}
-              fullWidth
               variant="outlined"
               name="bio"
               value={bio}
@@ -303,6 +300,7 @@ const ProfileForm = ({
           <div className="my-2">
             <Button
               onClick={() => toggleSocialInputs(!displaySocialInputs)}
+              margin="normal"
               className={btnStyle.primary}
             >
               Add Social Network Links
@@ -314,6 +312,8 @@ const ProfileForm = ({
               <div className="m-1 social-input">
                 <TwitterIcon className={icnStyle.twitter}></TwitterIcon>
                 <TextField
+                  margin="normal"
+                  fullWidth
                   label="Twitter URL"
                   fullWidth
                   variant="outlined"
@@ -326,6 +326,8 @@ const ProfileForm = ({
               <div className="m-1 social-input">
                 <FacebookIcon className={icnStyle.facebook}></FacebookIcon>
                 <TextField
+                  margin="normal"
+                  fullWidth
                   type="link"
                   label="Facebook URL"
                   fullWidth
@@ -339,6 +341,8 @@ const ProfileForm = ({
               <div className="m-1 social-input">
                 <YouTubeIcon className={icnStyle.youtube}></YouTubeIcon>
                 <TextField
+                  margin="normal"
+                  fullWidth
                   label="YouTube URL"
                   fullWidth
                   variant="outlined"
@@ -351,6 +355,8 @@ const ProfileForm = ({
               <div className="m-1 social-input">
                 <LinkedInIcon className={icnStyle.linkedin}></LinkedInIcon>
                 <TextField
+                  margin="normal"
+                  fullWidth
                   label="Linkedin URL"
                   fullWidth
                   variant="outlined"
@@ -363,6 +369,8 @@ const ProfileForm = ({
               <div className="m-1 social-input">
                 <InstagramIcon className={icnStyle.instagram}></InstagramIcon>
                 <TextField
+                  margin="normal"
+                  fullWidth
                   label="Instagram URL"
                   fullWidth
                   variant="outlined"
@@ -373,17 +381,21 @@ const ProfileForm = ({
               </div>
             </Fragment>
           )}
-
-          <Button
-            type="submit"
-            variant="contained"
-            className={btnStyle.secondary}
-          >
-            Submit
-          </Button>
-          <Button className={btnStyle.cancel} href="/dashboard">
-            Go Back
-          </Button>
+          <div className='text-center'>
+            <Button
+              type="submit"
+              variant="contained"
+              className={btnStyle.secondary}
+            >
+              Submit
+            </Button>
+            <Button
+              className={btnStyle.cancel}
+              href="/dashboard"
+            >
+              Go Back
+            </Button>
+          </div>
         </form>
       </div>
     </Container>
