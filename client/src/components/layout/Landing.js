@@ -28,7 +28,7 @@ const Landing = ({ isAuthenticated }) => {
   const classes = landingStyle();
 
   if (isAuthenticated) {
-    return <Redirect to="/dashboard" />;
+    return <Redirect to="/posts" />;
   }
 
   return (
